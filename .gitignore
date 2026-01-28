@@ -1,0 +1,5 @@
+# Die fertige EXE nicht sichern (ist zu groß und ändert sich ständig)
+*.exe
+
+# Temporäre Dateien von Go
+/vendor/
