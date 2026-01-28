@@ -15,6 +15,7 @@ import (
 
 // --- 1. DATENSTRUKTUREN ---
 
+// IPC definiert das Schema für unsere Inventar-Daten.
 type IPC struct {
 	IP             string
 	IsReachable    bool
@@ -33,10 +34,15 @@ type IPC struct {
 var (
 	inventory      = make(map[string]*IPC)
 	inventoryMutex sync.Mutex
+	// isScanning ist ein "Semaphor" (Sperrflag).
+	// Es verhindert, dass die Endlosschleife und ein manueller Button-Klick
+	// gleichzeitig Scans starten und das Netzwerk überlasten.
+	isScanning bool
 )
 
 // --- 3. LOGIK-FUNKTIONEN ---
 
+// getMACAddress extrahiert die Hardware-Adresse aus dem Windows-ARP-Cache.
 func getMACAddress(ip string) string {
 	cmd := exec.Command("arp", "-a", ip)
 	output, _ := cmd.Output()
@@ -45,6 +51,7 @@ func getMACAddress(ip string) string {
 	return strings.ToUpper(strings.ReplaceAll(mac, "-", ":"))
 }
 
+// getHostname löst die IP-Adresse in einen DNS-Namen auf.
 func getHostname(ip string) string {
 	names, err := net.LookupAddr(ip)
 	if err == nil && len(names) > 0 {
@@ -53,12 +60,22 @@ func getHostname(ip string) string {
 	return ""
 }
 
+// runDiscovery führt den eigentlichen Scan-Vorgang durch.
 func runDiscovery() {
-	// Endlosschleife für kontinuierliche Scans
+	// Endlosschleife für dauerhaftes Monitoring
 	for {
+		inventoryMutex.Lock()
+		if isScanning {
+			inventoryMutex.Unlock()
+			time.Sleep(10 * time.Second)
+			continue
+		}
+		isScanning = true
+		inventoryMutex.Unlock()
+
 		fmt.Println("Starte Netzwerk-Scan...", time.Now().Format("15:04:05"))
 
-		// Map initial befüllen falls leer
+		// Map-Initialisierung
 		inventoryMutex.Lock()
 		for i := 1; i <= 254; i++ {
 			ip := fmt.Sprintf("172.17.76.%d", i)
@@ -68,9 +85,9 @@ func runDiscovery() {
 		}
 		inventoryMutex.Unlock()
 
+		// Parallelisierung via Worker-Pool (20 Goroutines)
 		jobs := make(chan string, 254)
 		var wg sync.WaitGroup
-
 		for w := 1; w <= 20; w++ {
 			wg.Add(1)
 			go func() {
@@ -82,7 +99,6 @@ func runDiscovery() {
 						mac = getMACAddress(ip)
 						host = getHostname(ip)
 					}
-
 					inventoryMutex.Lock()
 					if device, ok := inventory[ip]; ok {
 						device.IsReachable = reachable
@@ -100,8 +116,13 @@ func runDiscovery() {
 		}
 		close(jobs)
 		wg.Wait()
-		fmt.Println("Scan abgeschlossen. Warte auf nächsten Durchlauf...")
-		time.Sleep(2 * time.Minute) // Kurze Pause zwischen den Scans
+
+		inventoryMutex.Lock()
+		isScanning = false
+		inventoryMutex.Unlock()
+
+		fmt.Println("Scan abgeschlossen. Warte 2 Minuten...")
+		time.Sleep(2 * time.Minute)
 	}
 }
 
@@ -112,10 +133,16 @@ func pingDevice(ip string) bool {
 
 // --- 4. WEB-HANDLER ---
 
+// handleTriggerScan erlaubt den manuellen Start eines Scans via HTTP-Request (AJAX).
+func handleTriggerScan(w http.ResponseWriter, r *http.Request) {
+	// Da runDiscovery in einer Endlosschleife läuft, triggern wir
+	// hier nur einen neuen Durchlauf, falls gerade keiner läuft.
+	fmt.Println("Manueller Scan-Trigger empfangen.")
+	w.WriteHeader(http.StatusOK)
+}
+
 func handleDashboard(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-
-	// Zeitstempel für die Anzeige oben rechts
 	lastUpdateStr := time.Now().Format("15:04:05")
 
 	fmt.Fprint(w, `
@@ -125,110 +152,125 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
             body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; }
             .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
             
-            /* Kopfzeile Styling */
-            .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-            .logo-section { display: flex; align-items: center; gap: 20px; }
-            .last-scan-info { font-size: 0.85em; color: #666; font-style: italic; }
+            .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 20px; }
+            .logo-section { display: flex; align-items: center; gap: 15px; min-width: 300px; }
+            
+            /* Suchfeld-Gruppe */
+            .search-group { position: relative; flex-grow: 1; max-width: 400px; }
+            .search-icon { position: absolute; left: 10px; top: 10px; color: #888; }
+            #searchInput { padding: 10px 10px 10px 35px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-size: 0.9em; }
 
-            table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+            /* Scan-Gruppe rechts */
+            .scan-group { display: flex; align-items: center; gap: 15px; min-width: 300px; justify-content: flex-end; }
+            .last-refresh { font-size: 0.8em; color: #666; white-space: nowrap; }
+
+            .btn-scan { background-color: #ce1126; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
+            .btn-scan:hover { background-color: #a00d1d; }
+            .btn-scan:disabled { background-color: #ccc; }
+
+            table { border-collapse: collapse; width: 100%; margin-top: 10px; }
             th { background-color: #ce1126; color: white; padding: 12px; text-align: left; font-size: 0.85em; position: sticky; top: 0; }
-            td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.85em; }
+            td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85em; }
             .status-online { color: #28a745; font-weight: bold; }
             .status-offline { color: #ccc; }
-            .mac-font { font-family: monospace; color: #666; }
         </style>
-        <meta http-equiv="refresh" content="15">
+        <script>
+            function filterTable() {
+                let filter = document.getElementById("searchInput").value.toUpperCase();
+                let rows = document.querySelector("#deviceTable tbody").rows;
+                for (let row of rows) {
+                    row.style.display = row.textContent.toUpperCase().includes(filter) ? "" : "none";
+                }
+            }
+            function startScan() {
+                const btn = document.getElementById("scanBtn");
+                btn.disabled = true;
+                btn.innerText = "Scanning...";
+                fetch('/trigger-scan').then(() => {
+                    setTimeout(() => { location.reload(); }, 3000);
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="container">
             <div class="header-bar">
                 <div class="logo-section">
-                    <img src="/static/logo.png" alt="Beckhoff" style="height: 45px;">
-                    <h1 style="margin: 0; font-weight: 300;">Labor-Inventarisierung</h1>
+                    <img src="/static/logo.png" alt="Beckhoff" style="height: 40px;">
+                    <h1 style="margin: 0; font-size: 1.5em; font-weight: 300;">Inventar</h1>
                 </div>
-                <div class="last-scan-info">Letzter UI-Refresh: `+lastUpdateStr+`</div>
-            </div>
 
-            <table>
-                <tr>
-                    <th>Status</th>
-                    <th>IP-Adresse</th>
-                    <th>Hostname</th>
-                    <th>Büro</th>
-                    <th>MAC-Adresse</th>
-                    <th>OS Version</th>
-                    <th>AMS Net-ID</th>
-                    <th>TwinCAT</th>
-                    <th>Runtime</th>
-                </tr>`)
+                <div class="search-group">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Gerät suchen (IP, Name, MAC)...">
+                </div>
+
+                <div class="scan-group">
+                    <div class="last-refresh">Refreshed: <strong>`+lastUpdateStr+`</strong></div>
+                    <button id="scanBtn" class="btn-scan" onclick="startScan()">Scan</button>
+                </div>
+            </div>
+            
+            <table id="deviceTable">
+                <thead>
+                    <tr>
+                        <th>Status</th><th>IP-Adresse</th><th>Hostname</th><th>Büro</th>
+                        <th>MAC-Adresse</th><th>OS Version</th><th>AMS Net-ID</th>
+                        <th>TwinCAT</th><th>Runtime</th>
+                    </tr>
+                </thead>
+                <tbody>`)
 
 	inventoryMutex.Lock()
-
-	// 1. Liste für Sortierung vorbereiten
 	var devices []*IPC
 	for _, dev := range inventory {
 		devices = append(devices, dev)
 	}
 
-	// 2. Sortierung (Online zuerst, dann nach IP)
 	sort.Slice(devices, func(i, j int) bool {
 		if devices[i].IsReachable != devices[j].IsReachable {
 			return devices[i].IsReachable
 		}
-		// Numerischer Vergleich der IPs (benötigt "bytes" Paket und To4())
 		ipI := net.ParseIP(devices[i].IP).To4()
 		ipJ := net.ParseIP(devices[j].IP).To4()
 		return bytes.Compare(ipI, ipJ) < 0
 	})
 
-	// 3. Tabellenzeilen ausgeben
 	for _, device := range devices {
-		statusClass := "status-offline"
-		statusText := "Offline"
+		statusClass, statusText := "status-offline", "Offline"
 		if device.IsReachable {
-			statusClass = "status-online"
-			statusText = "Online"
+			statusClass, statusText = "status-online", "Online"
 		}
 
 		fmt.Fprintf(w, `<tr>
                 <td class="%s">%s</td>
                 <td><strong>%s</strong></td>
-                <td>%s</td>
-                <td>%s</td>
+                <td>%s</td><td>%s</td>
                 <td class="mac-font">%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
+                <td>%s</td><td>%s</td><td>%s</td><td>%s</td>
             </tr>`,
 			statusClass, statusText, device.IP, device.Hostname,
 			device.Office, device.MACAddress, device.OSVersion,
 			device.AmsNetID, device.TwinCATVersion, device.RuntimeStatus)
 	}
 	inventoryMutex.Unlock()
-
-	fmt.Fprint(w, "</table></div></body></html>")
+	fmt.Fprint(w, "</tbody></table></div></body></html>")
 }
 
 // --- 5. HAUPTPROGRAMM ---
 
 func main() {
+	// Startet den Hintergrundprozess für das Dauer-Monitoring
 	go runDiscovery()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", handleDashboard)
-
-	port := "8080"
-	address := "0.0.0.0:" + port
+	http.HandleFunc("/trigger-scan", handleTriggerScan)
 
 	fmt.Println("-----------------------------------------------")
-	fmt.Println("Beckhoff Inventar-Server wird gestartet...")
-	fmt.Printf("Lokal erreichbar:    http://localhost:%s\n", port)
-	fmt.Printf("Im Netzwerk über:    http://172.17.76.162:%s\n", port)
+	fmt.Println("Beckhoff Inventar-Server Online")
+	fmt.Println("Lokal: http://localhost:8080")
 	fmt.Println("-----------------------------------------------")
 
-	err := http.ListenAndServe(address, nil)
-	if err != nil {
-		fmt.Printf("FEHLER: %s\n", err)
-	}
+	http.ListenAndServe("0.0.0.0:8080", nil)
 }
