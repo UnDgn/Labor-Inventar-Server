@@ -11,6 +11,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	ads "github.com/stamp/goADS"
 )
 
 // --- 1. DATENSTRUKTUREN ---
@@ -59,6 +61,55 @@ func getHostname(ip string) string {
 	}
 	return ""
 }
+func discoverTargets() map[string]string { // um IP-Adressen zu AmsNetIDs zuzuordnen
+	// TODO: später Automation Interface Broadcast Search
+	return make(map[string]string)
+}
+
+func getAdsData(ip string, amsNetID string) (tcVersion string, state string) {
+	// --- 1) PLC State (851) ---
+	plcConn, err := ads.NewConnection(ip, amsNetID, 851)
+	if err != nil {
+		return "Conn Error", "Offline"
+	}
+	defer plcConn.Close()
+
+	plcConn.Connect()
+
+	st, err := plcConn.ReadState()
+	if err != nil {
+		return "Route/ADS Error", "Locked"
+	}
+
+	switch st.ADSState {
+	case 5:
+		state = "RUN"
+	case 6:
+		state = "STOP"
+	case 15:
+		state = "CONFIG"
+	default:
+		state = fmt.Sprintf("State %d", st.ADSState)
+	}
+
+	// --- 2) DeviceInfo (10000) ---
+	sysConn, err := ads.NewConnection(ip, amsNetID, 10000)
+	if err != nil {
+		return "Unknown", state
+	}
+	defer sysConn.Close()
+
+	sysConn.Connect()
+
+	info, err := sysConn.ReadDeviceInfo()
+	if err == nil {
+		tcVersion = fmt.Sprintf("%d.%d.%d", info.MajorVersion, info.MinorVersion, info.BuildVersion)
+	} else {
+		tcVersion = "Unknown"
+	}
+
+	return tcVersion, state
+}
 
 // runDiscovery führt den eigentlichen Scan-Vorgang durch.
 func runDiscovery() {
@@ -75,6 +126,7 @@ func runDiscovery() {
 
 		fmt.Println("Starte Netzwerk-Scan...", time.Now().Format("15:04:05"))
 
+		discovered := discoverTargets() // returns map[string]string (IP -> NetID)
 		// Map-Initialisierung
 		inventoryMutex.Lock()
 		for i := 1; i <= 254; i++ {
@@ -94,16 +146,27 @@ func runDiscovery() {
 				defer wg.Done()
 				for ip := range jobs {
 					reachable := pingDevice(ip)
-					var mac, host string
+					var mac, host, aNetID, aVer, aStatus string
 					if reachable {
 						mac = getMACAddress(ip)
 						host = getHostname(ip)
+						if netID, ok := discovered[ip]; ok {
+							aNetID = netID
+							aVer, aStatus = getAdsData(ip, aNetID)
+						} else {
+							aNetID = ""
+							aVer = ""
+							aStatus = "No NetID"
+						}
 					}
 					inventoryMutex.Lock()
 					if device, ok := inventory[ip]; ok {
 						device.IsReachable = reachable
 						device.MACAddress = mac
 						device.Hostname = host
+						device.AmsNetID = aNetID
+						device.TwinCATVersion = aVer
+						device.RuntimeStatus = aStatus
 						device.LastUpdate = time.Now()
 					}
 					inventoryMutex.Unlock()
@@ -197,7 +260,7 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
             <div class="header-bar">
                 <div class="logo-section">
                     <img src="/static/logo.png" alt="Beckhoff" style="height: 40px;">
-                    <h1 style="margin: 0; font-size: 1.5em; font-weight: 300;">Inventar</h1>
+                    <h1 style="margin: 0; font-size: 1.5em; font-weight: 300;">Testnetz</h1>
                 </div>
 
                 <div class="search-group">
