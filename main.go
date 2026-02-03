@@ -61,9 +61,9 @@ func getHostname(ip string) string {
 	}
 	return ""
 }
-func discoverTargets() map[string]string { // um IP-Adressen zu AmsNetIDs zuzuordnen
-	// TODO: später Automation Interface Broadcast Search
-	return make(map[string]string)
+
+func isInLabSubnet(ip string) bool {
+	return strings.HasPrefix(ip, "172.17.76.")
 }
 
 func getAdsData(ip string, amsNetID string) (tcVersion string, state string) {
@@ -126,7 +126,12 @@ func runDiscovery() {
 
 		fmt.Println("Starte Netzwerk-Scan...", time.Now().Format("15:04:05"))
 
-		discovered := discoverTargets() // returns map[string]string (IP -> NetID)
+		discovered := discoverTargetsUDP(2500 * time.Millisecond)
+		fmt.Println("Discovery found:", len(discovered))
+		for ip, netid := range discovered {
+			fmt.Println("  ", ip, "->", netid)
+		}
+
 		// Map-Initialisierung
 		inventoryMutex.Lock()
 		for i := 1; i <= 254; i++ {
@@ -150,12 +155,13 @@ func runDiscovery() {
 					if reachable {
 						mac = getMACAddress(ip)
 						host = getHostname(ip)
-						if netID, ok := discovered[ip]; ok {
+
+						if !isInLabSubnet(ip) {
+							aStatus = "Not TwinCAT Network"
+						} else if netID, ok := discovered[ip]; ok {
 							aNetID = netID
 							aVer, aStatus = getAdsData(ip, aNetID)
 						} else {
-							aNetID = ""
-							aVer = ""
 							aStatus = "No NetID"
 						}
 					}
