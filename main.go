@@ -32,6 +32,7 @@ type IPC struct {
 }
 
 // --- 2. GLOBALE VARIABLEN ---
+var localAmsNetID = "172.17.76.162.1.1"
 
 var (
 	inventory      = make(map[string]*IPC)
@@ -62,12 +63,9 @@ func getHostname(ip string) string {
 	return ""
 }
 
-func isInLabSubnet(ip string) bool {
-	return strings.HasPrefix(ip, "172.17.76.")
-}
-
 func getAdsData(ip string, amsNetID string) (tcVersion string, state string) {
-	// --- 1) PLC State (851) ---
+
+	// --- PLC State ---
 	plcConn, err := ads.NewConnection(ip, amsNetID, 851)
 	if err != nil {
 		return "Conn Error", "Offline"
@@ -92,7 +90,7 @@ func getAdsData(ip string, amsNetID string) (tcVersion string, state string) {
 		state = fmt.Sprintf("State %d", st.ADSState)
 	}
 
-	// --- 2) DeviceInfo (10000) ---
+	// --- Device Info ---
 	sysConn, err := ads.NewConnection(ip, amsNetID, 10000)
 	if err != nil {
 		return "Unknown", state
@@ -102,11 +100,15 @@ func getAdsData(ip string, amsNetID string) (tcVersion string, state string) {
 	sysConn.Connect()
 
 	info, err := sysConn.ReadDeviceInfo()
-	if err == nil {
-		tcVersion = fmt.Sprintf("%d.%d.%d", info.MajorVersion, info.MinorVersion, info.BuildVersion)
-	} else {
-		tcVersion = "Unknown"
+	if err != nil {
+		return "Unknown", state
 	}
+
+	tcVersion = fmt.Sprintf("%d.%d.%d",
+		info.MajorVersion,
+		info.MinorVersion,
+		info.BuildVersion,
+	)
 
 	return tcVersion, state
 }
@@ -125,12 +127,6 @@ func runDiscovery() {
 		inventoryMutex.Unlock()
 
 		fmt.Println("Starte Netzwerk-Scan...", time.Now().Format("15:04:05"))
-
-		discovered := discoverTargetsUDP(2500 * time.Millisecond)
-		fmt.Println("Discovery found:", len(discovered))
-		for ip, netid := range discovered {
-			fmt.Println("  ", ip, "->", netid)
-		}
 
 		// Map-Initialisierung
 		inventoryMutex.Lock()
@@ -151,28 +147,16 @@ func runDiscovery() {
 				defer wg.Done()
 				for ip := range jobs {
 					reachable := pingDevice(ip)
-					var mac, host, aNetID, aVer, aStatus string
+					var mac, host string
 					if reachable {
 						mac = getMACAddress(ip)
 						host = getHostname(ip)
-
-						if !isInLabSubnet(ip) {
-							aStatus = "Not TwinCAT Network"
-						} else if netID, ok := discovered[ip]; ok {
-							aNetID = netID
-							aVer, aStatus = getAdsData(ip, aNetID)
-						} else {
-							aStatus = "No NetID"
-						}
 					}
 					inventoryMutex.Lock()
 					if device, ok := inventory[ip]; ok {
 						device.IsReachable = reachable
 						device.MACAddress = mac
 						device.Hostname = host
-						device.AmsNetID = aNetID
-						device.TwinCATVersion = aVer
-						device.RuntimeStatus = aStatus
 						device.LastUpdate = time.Now()
 					}
 					inventoryMutex.Unlock()
