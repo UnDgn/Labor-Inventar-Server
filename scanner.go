@@ -204,6 +204,11 @@ func runDiscovery() {
 					now := time.Now()
 
 					inventoryMutex.Lock()
+					if reachable && mac != "" {
+						dedupByMACIfNeededLocked(ip, mac)
+					}
+
+					// danach ganz normal updaten (ggf. hat Migration schon Daten übernommen)
 					if dev, ok := inventory[ip]; ok {
 						dev.IsReachable = reachable
 						dev.LastScan = now
@@ -211,7 +216,7 @@ func runDiscovery() {
 						if reachable {
 							dev.LastSeenOnline = now
 							if mac != "" {
-								dev.MACAddress = mac
+								dev.MACAddress = normalizeMAC(mac) // optional aber sauber
 							}
 							if host != "" {
 								dev.Hostname = host

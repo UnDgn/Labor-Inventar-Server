@@ -117,7 +117,10 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 
 	for _, device := range devices {
 		var lastSeenStr string
-		if !device.LastSeenOnline.IsZero() {
+
+		if device.IsReachable {
+			lastSeenStr = "<span style='color:#28a745;font-weight:bold;'>Jetzt</span>"
+		} else if !device.LastSeenOnline.IsZero() {
 			lastSeenStr = device.LastSeenOnline.Format("02.01.2006 15:04:05")
 		} else {
 			lastSeenStr = "-"
