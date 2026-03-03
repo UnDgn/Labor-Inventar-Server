@@ -11,27 +11,50 @@ import (
 	"time"
 )
 
-// --- 4. ADS UDP DISCOVERY (Port 48899) - 1:1 wie C# ---
+// UDP-Discovery Ergebnis (Portierung von RemotePlcInfo)
+type RemotePlcInfo struct {
+	Name        string
+	Address     net.IP
+	AmsNetID    string
+	OsVersion   string
+	Fingerprint string
+	Comment     string
+	TcVersion   AdsVersion
+	IsRuntime   string
+	Hostname    string
+}
 
-// Segments wie Segment.cs
+type AdsVersion struct {
+	Version  uint8
+	Revision uint8
+	Build    int16
+}
+
+func (v AdsVersion) String() string {
+	return fmt.Sprintf("%d.%d.%d", v.Version, v.Revision, v.Build)
+}
+
+// --- UDP Segments (Prefix udp...) ---
 var (
-	segHeader           = []byte{0x03, 0x66, 0x14, 0x71}
-	segEnd              = []byte{0, 0, 0, 0}
-	segRequestDiscover  = []byte{1, 0, 0, 0}
-	segResponseDiscover = []byte{1, 0, 0, 0x80}
-	segPort             = []byte{0x10, 0x27}                   // Segment.PORT
-	segRouteTypeStatic  = []byte{5, 0, 0, 0}                   // Segment.ROUTETYPE_STATIC
-	segTcatRuntime      = []byte{4, 0, 0x14, 1, 0x14, 1, 0, 0} // Segment.TCATTYPE_RUNTIME
-	segTcatEngineering  = []byte{4, 0, 0x94, 0, 0x94, 0, 0, 0} // Segment.TCATTYPE_ENGINEERING
+	udpSegHeader           = []byte{0x03, 0x66, 0x14, 0x71}
+	udpSegEnd              = []byte{0, 0, 0, 0}
+	udpSegRequestDiscover  = []byte{1, 0, 0, 0}
+	udpSegResponseDiscover = []byte{1, 0, 0, 0x80}
+	udpSegPort10000        = []byte{0x10, 0x27} // 10000 little endian
+	udpSegRouteTypeStatic  = []byte{5, 0, 0, 0}
 
-	lenNameLen    = 4  // Segment.L_NAMELENGTH
-	lenOSVersion  = 12 // Segment.L_OSVERSION
-	lenDescMarker = 4  // Segment.L_DESCRIPTIONMARKER
-	adsUdpPort    = 48899
+	udpSegTcatRuntime     = []byte{4, 0, 0x14, 1, 0x14, 1, 0, 0}
+	udpSegTcatEngineering = []byte{4, 0, 0x94, 0, 0x94, 0, 0, 0}
+
+	udpLenNameLen    = 4
+	udpLenOSVersion  = 12
+	udpLenDescMarker = 4
+
+	udpPort48899 = 48899
 )
 
-// OS Dictionaries wie in AdsRouter.cs
-var osIDs = map[uint16]string{
+// OS Dictionaries wie in C#
+var udpOsIDs = map[uint16]string{
 	0x0A00: "Windows",
 	0x0700: "Win CE (7.0)",
 	0x0602: "Win 8/8.1/10",
@@ -42,7 +65,7 @@ var osIDs = map[uint16]string{
 	0x0009: "RTOS",
 }
 
-var osBuildIDs = map[uint16]string{
+var udpOsBuildIDs = map[uint16]string{
 	0x5866: "11 (26200) 25H2",
 	0xF465: "11 (26100) 24H2",
 	0x6758: "11 (22631) 23H2",
@@ -64,18 +87,18 @@ var osBuildIDs = map[uint16]string{
 }
 
 // Hilfsstruktur wie ResponseResult + NextChunk
-type responseResult struct {
+type udpResponseResult struct {
 	Buffer     []byte
 	RemoteHost net.IP
 	Shift      int
 }
 
-func (rr *responseResult) nextChunk(n int, peek bool, add int) []byte {
+func (rr *udpResponseResult) nextChunk(n int, peek bool, add int) []byte {
 	if n < 0 {
 		n = 0
 	}
 	if rr.Shift+n > len(rr.Buffer) {
-		n = max(0, len(rr.Buffer)-rr.Shift)
+		n = maxInt(0, len(rr.Buffer)-rr.Shift)
 	}
 	ch := rr.Buffer[rr.Shift : rr.Shift+n]
 	if !peek {
@@ -84,11 +107,19 @@ func (rr *responseResult) nextChunk(n int, peek bool, add int) []byte {
 	return ch
 }
 
+func maxInt(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func isInLabSubnetIP(ip net.IP) bool {
 	ip4 := ip.To4()
 	return ip4 != nil && ip4[0] == 172 && ip4[1] == 17 && ip4[2] == 76
 }
 
+// Wird von scanner.go genutzt
 func getLocalLabIPv4() (net.IP, net.IPMask, error) {
 	ifaces, err := net.Interfaces()
 	if err != nil {
@@ -134,50 +165,49 @@ func broadcastAddr(ip net.IP, mask net.IPMask) (net.IP, error) {
 
 func buildDiscoverRequest(localIP net.IP) []byte {
 	ip4 := localIP.To4()
-	// Segment.AMSNETID = {ip0,ip1,ip2,ip3,1,1}
+	// AMS = ip0.ip1.ip2.ip3.1.1
 	ams := []byte{0, 0, 0, 0, 1, 1}
 	if ip4 != nil {
 		copy(ams[0:4], ip4)
 	}
 
 	var out []byte
-	out = append(out, segHeader...)
-	out = append(out, segEnd...)
-	out = append(out, segRequestDiscover...)
+	out = append(out, udpSegHeader...)
+	out = append(out, udpSegEnd...)
+	out = append(out, udpSegRequestDiscover...)
 	out = append(out, ams...)
-	out = append(out, segPort...)
-	out = append(out, segEnd...)
+	out = append(out, udpSegPort10000...)
+	out = append(out, udpSegEnd...)
 	return out
 }
 
-// 1:1 Portierung von AdsRouter.ParseBroadcastSearchResponse()
-func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
+// 1:1 Portierung (gekürzt, aber funktional) von C# ParseBroadcastSearchResponse
+func parseBroadcastSearchResponse(rr *udpResponseResult) RemotePlcInfo {
 	dev := RemotePlcInfo{Address: rr.RemoteHost}
 
-	// Header checks
 	if len(rr.Buffer) < 12 {
 		return dev
 	}
-	if !bytes.Equal(rr.Buffer[0:4], segHeader) {
+	if !bytes.Equal(rr.Buffer[0:4], udpSegHeader) {
 		return dev
 	}
-	if !bytes.Equal(rr.Buffer[4:8], segEnd) {
+	if !bytes.Equal(rr.Buffer[4:8], udpSegEnd) {
 		return dev
 	}
-	if !bytes.Equal(rr.Buffer[8:12], segResponseDiscover) {
+	if !bytes.Equal(rr.Buffer[8:12], udpSegResponseDiscover) {
 		return dev
 	}
 
-	rr.Shift = len(segHeader) + len(segEnd) + len(segResponseDiscover)
+	rr.Shift = 4 + 4 + 4
 
-	// AmsNetId + skip PORT(2) + ROUTE_TYPE(4)
-	ams := rr.nextChunk(6, false, len(segPort)+len(segRouteTypeStatic))
+	// AmsNetId + skip port(2) + routeType(4)
+	ams := rr.nextChunk(6, false, len(udpSegPort10000)+len(udpSegRouteTypeStatic))
 	if len(ams) == 6 {
 		dev.AmsNetID = fmt.Sprintf("%d.%d.%d.%d.%d.%d", ams[0], ams[1], ams[2], ams[3], ams[4], ams[5])
 	}
 
 	// NameLength
-	bNameLen := rr.nextChunk(lenNameLen, false, 0)
+	bNameLen := rr.nextChunk(udpLenNameLen, false, 0)
 	nameLen := 0
 	if len(bNameLen) == 4 && bNameLen[0] == 5 && bNameLen[1] == 0 {
 		nameLen = int(bNameLen[2]) + int(bNameLen[3])*256
@@ -186,30 +216,29 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 	bName := rr.nextChunk(nameLen-1, false, 1)
 	dev.Name = string(bName)
 
-	// TCat type (8 bytes)
-	tcatType := rr.nextChunk(len(segTcatRuntime), false, 0)
-	if len(tcatType) == 8 && tcatType[0] == segTcatRuntime[0] {
-		if tcatType[2] == segTcatRuntime[2] {
+	// TwinCAT Type (8)
+	tcatType := rr.nextChunk(8, false, 0)
+	if len(tcatType) == 8 && tcatType[0] == 4 {
+		if tcatType[2] == udpSegTcatRuntime[2] {
 			dev.IsRuntime = "X"
-		} else if tcatType[2] == segTcatEngineering[2] {
+		} else if tcatType[2] == udpSegTcatEngineering[2] {
 			dev.IsRuntime = ""
 		}
 	}
 
-	// OS version (12 bytes)
-	osVer := rr.nextChunk(lenOSVersion, false, 0)
-	isUnicode := false
+	// OS Version (12)
+	osVer := rr.nextChunk(udpLenOSVersion, false, 0)
 	if len(osVer) == 12 {
 		osKey := uint16(osVer[0])*256 + uint16(osVer[4])
 		osBuildKey := uint16(osVer[8])*256 + uint16(osVer[9])
 
-		os := osIDs[osKey]
+		os := udpOsIDs[osKey]
 		if os == "" {
 			os = fmt.Sprintf("%X2", osKey)
 		}
 
 		if strings.Contains(os, "Windows") {
-			build := osBuildIDs[osBuildKey]
+			build := udpOsBuildIDs[osBuildKey]
 			if build == "" {
 				build = fmt.Sprintf("%X2", osBuildKey)
 			}
@@ -228,9 +257,9 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 	// Tail (peek)
 	tail := rr.nextChunk(len(rr.Buffer)-rr.Shift, true, 0)
 
-	// Hostname (C# Offsets)
-	if len(tail)-4 > 333 && len(tail) > 339 && tail[337] == 20 {
-		hLen := int(tail[339]) // "length of hostname with 1 too long"
+	// Hostname: wie C# (heuristisch)
+	if len(tail) > 339 && tail[337] == 20 {
+		hLen := int(tail[339])
 		if hLen > 1 && hLen < 253 {
 			hostnameBuf := make([]byte, 253)
 			for j := len(tail) - 2; j > (len(tail) - 2 - hLen); j-- {
@@ -254,7 +283,6 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 		return tail[idx]
 	}
 
-	// scan backwards in steps of 4
 	for i := ci; i > 0; i -= 4 {
 		// TC2
 		if get(i+0) == 3 && get(i+2) == 4 {
@@ -266,7 +294,6 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 
 		// TC3
 		if get((i-tc3FingerprintLen)+0) == 3 && get((i-tc3FingerprintLen)+2) == 4 {
-			isUnicode = get(i+4) > 2
 			j := i - tc3FingerprintLen
 			dev.TcVersion.Version = get(j + 4)
 			dev.TcVersion.Revision = get(j + 5)
@@ -275,10 +302,9 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 		}
 
 		// TC3 with hostname
-		if len(tail)-4 > 333 && len(tail) > 339 {
+		if len(tail) > 339 {
 			hLen := int(get(339))
 			if get((i-tc3FingerprintLen-hLen)+0) == 3 && get((i-tc3FingerprintLen-hLen)+2) == 4 {
-				isUnicode = get(i+4) > 2
 				j := i - tc3FingerprintLen - hLen
 				dev.TcVersion.Version = get(j + 4)
 				dev.TcVersion.Revision = get(j + 5)
@@ -288,61 +314,23 @@ func parseBroadcastSearchResponse(rr *responseResult) RemotePlcInfo {
 		}
 	}
 
-	// Runtime info (C# setzt bei TC3 "no Info")
+	// C# setzt TC3 runtime bewusst auf no Info
 	if strings.HasPrefix(dev.TcVersion.String(), "3.") {
 		dev.IsRuntime = "no Info"
 	}
 
-	// Fingerprint (optional, nicht im Dashboard genutzt – aber portiert)
-	// (C# nimmt Substring(2) von 65 chars)
-	if len(tail) >= 80 {
-		var fp []byte
-		if len(tail)-4 > 333 && len(tail) > 339 {
-			hLen := int(get(339))
-			start := len(tail) - 6 - 65 - hLen
-			end := len(tail) - 6 - hLen
-			if start >= 0 && end > start && end <= len(tail) {
-				fp = tail[start:end]
-			}
-		} else {
-			start := len(tail) - 2 - 65
-			end := len(tail) - 2
-			if start >= 0 && end > start && end <= len(tail) {
-				fp = tail[start:end]
-			}
-		}
-		if len(fp) >= 2 {
-			dev.Fingerprint = string(fp[2:])
-		}
-	}
-
-	// Comment marker + comment (optional)
-	descMarker := rr.nextChunk(lenDescMarker, false, 0)
+	// Kommentar (optional)
+	descMarker := rr.nextChunk(udpLenDescMarker, false, 0)
 	if len(descMarker) == 4 && descMarker[0] == 2 {
 		start := rr.Shift
 		if start >= 0 && start < len(rr.Buffer) {
-			if isUnicode {
-				// scan UTF-16 until 0x00 0x00
-				end := start
-				for end+1 < len(rr.Buffer) {
-					if rr.Buffer[end] == 0 && rr.Buffer[end+1] == 0 {
-						break
-					}
-					end += 2
-				}
-				if end > start {
-					dev.Comment = utf16LEToASCII(rr.Buffer[start:end])
-					rr.Shift = end
-				}
-			} else {
-				end := start
-				for end < len(rr.Buffer) && rr.Buffer[end] != 0 {
-					end++
-				}
-				if end > start {
-					dev.Comment = string(rr.Buffer[start:end])
-					rr.Shift = end
-				}
+			end := start
+			for end < len(rr.Buffer) && rr.Buffer[end] != 0 {
+				end++
+			}
+			if end > start {
+				dev.Comment = string(rr.Buffer[start:end])
+				rr.Shift = end
 			}
 		}
 	}
@@ -369,6 +357,7 @@ func utf16LEToASCII(b []byte) string {
 	return out.String()
 }
 
+// Discover Beckhoff devices via UDP broadcast
 func discoverPlcsUDP(ctx context.Context, timeout time.Duration) ([]RemotePlcInfo, error) {
 	localIP, mask, err := getLocalLabIPv4()
 	if err != nil {
@@ -388,7 +377,7 @@ func discoverPlcsUDP(ctx context.Context, timeout time.Duration) ([]RemotePlcInf
 	req := buildDiscoverRequest(localIP)
 
 	_ = conn.SetWriteDeadline(time.Now().Add(500 * time.Millisecond))
-	_, err = conn.WriteToUDP(req, &net.UDPAddr{IP: bc, Port: adsUdpPort})
+	_, err = conn.WriteToUDP(req, &net.UDPAddr{IP: bc, Port: udpPort48899})
 	if err != nil {
 		return nil, err
 	}
@@ -400,6 +389,10 @@ func discoverPlcsUDP(ctx context.Context, timeout time.Duration) ([]RemotePlcInf
 	for {
 		select {
 		case <-ctx.Done():
+			// returns what we have
+			sort.Slice(out, func(i, j int) bool {
+				return bytes.Compare(out[i].Address.To4(), out[j].Address.To4()) < 0
+			})
 			return out, ctx.Err()
 		default:
 		}
@@ -410,10 +403,10 @@ func discoverPlcsUDP(ctx context.Context, timeout time.Duration) ([]RemotePlcInf
 			if ne, ok := err.(net.Error); ok && ne.Timeout() {
 				break
 			}
-			return out, err
+			return nil, err
 		}
 
-		rr := &responseResult{
+		rr := &udpResponseResult{
 			Buffer:     append([]byte(nil), buf[:n]...),
 			RemoteHost: raddr.IP,
 			Shift:      0,
@@ -422,10 +415,8 @@ func discoverPlcsUDP(ctx context.Context, timeout time.Duration) ([]RemotePlcInf
 		out = append(out, dev)
 	}
 
-	// stabil nach IP sortieren
 	sort.Slice(out, func(i, j int) bool {
 		return bytes.Compare(out[i].Address.To4(), out[j].Address.To4()) < 0
 	})
-
 	return out, nil
 }

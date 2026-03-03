@@ -1,6 +1,6 @@
 package main
 
-import (
+import ( //--------------------------------------------------------------Onlinesetzen bei UDP gerät finden ergänzen!!! Wenn ping wegen firewall nicht findet----------------
 	"context"
 	"fmt"
 	"net"
@@ -11,7 +11,6 @@ import (
 	"time"
 )
 
-// --- 1. DATENSTRUKTUREN ---
 type IPC struct {
 	IP             string
 	IsReachable    bool
@@ -23,40 +22,18 @@ type IPC struct {
 	TwinCATVersion string
 	RuntimeStatus  string
 	LastUpdate     time.Time
+	LastScan       time.Time // wann zuletzt geprüft (egal ob online)
+	LastSeenOnline time.Time // wann zuletzt online gesehen
 }
-
-// UDP-Discovery Ergebnis (Portierung von RemotePlcInfo)
-type RemotePlcInfo struct {
-	Name        string
-	Address     net.IP
-	AmsNetID    string
-	OsVersion   string
-	Fingerprint string
-	Comment     string
-	TcVersion   AdsVersion
-	IsRuntime   string
-	Hostname    string
-}
-
-type AdsVersion struct {
-	Version  uint8
-	Revision uint8
-	Build    int16
-}
-
-func (v AdsVersion) String() string {
-	return fmt.Sprintf("%d.%d.%d", v.Version, v.Revision, v.Build)
-}
-
-// --- 2. GLOBALE VARIABLEN ---
 
 var (
 	inventory      = make(map[string]*IPC)
 	inventoryMutex sync.Mutex
 	isScanning     bool
+	scanTrigger    = make(chan struct{}, 1) // gepuffert: 1 = "scan requested"
 )
 
-// --- 3. BASIC FUNKTIONEN (Ping/MAC/DNS) ---
+// --- Ping/MAC/DNS ---
 
 func getMACAddress(ip string) string {
 	cmd := exec.Command("arp", "-a", ip)
@@ -79,21 +56,29 @@ func pingDevice(ip string) bool {
 	return cmd.Run() == nil
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-// --- 5. SCAN LOGIK ---
+// --- Scan ---
 
 func runDiscovery() {
+	select {
+	case scanTrigger <- struct{}{}:
+	default:
+	}
+	ticker := time.NewTicker(5 * time.Minute)
+	defer ticker.Stop()
+
 	for {
+		// warten auf automatischen Tick oder manuellen Trigger
+		select {
+		case <-ticker.C:
+			fmt.Println("Automatischer Scan ausgelöst")
+		case <-scanTrigger:
+			fmt.Println("Manueller Scan wird gestartet")
+		}
+
+		// Semaphore
 		inventoryMutex.Lock()
 		if isScanning {
 			inventoryMutex.Unlock()
-			time.Sleep(10 * time.Second)
 			continue
 		}
 		isScanning = true
@@ -101,7 +86,7 @@ func runDiscovery() {
 
 		fmt.Println("Starte Netzwerk-Scan...", time.Now().Format("15:04:05"))
 
-		// Map initialisieren (fix 254)
+		// Inventory init (fix 254)
 		inventoryMutex.Lock()
 		for i := 1; i <= 254; i++ {
 			ip := fmt.Sprintf("172.17.76.%d", i)
@@ -111,7 +96,7 @@ func runDiscovery() {
 		}
 		inventoryMutex.Unlock()
 
-		// UDP Discovery (liefert alle Beckhoff-Daten wie C#)
+		// UDP discovery
 		ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
 		plcs, derr := discoverPlcsUDP(ctx, 2500*time.Millisecond)
 		cancel()
@@ -122,31 +107,93 @@ func runDiscovery() {
 			fmt.Printf("ADS UDP discovery found: %d devices\n", len(plcs))
 		}
 
-		// Merge UDP Ergebnisse ins Inventory
+		// Merge UDP info
 		inventoryMutex.Lock()
 		for _, d := range plcs {
 			ipStr := d.Address.String()
-			if device, ok := inventory[ipStr]; ok {
-				device.AmsNetID = d.AmsNetID
-				device.OSVersion = d.OsVersion
-				device.TwinCATVersion = d.TcVersion.String()
-				device.RuntimeStatus = d.IsRuntime
-				// optional: Hostname aus UDP, falls DNS leer
-				if device.Hostname == "" && d.Hostname != "" {
-					device.Hostname = d.Hostname
+			if dev, ok := inventory[ipStr]; ok {
+				dev.AmsNetID = d.AmsNetID
+				dev.OSVersion = d.OsVersion
+				dev.TwinCATVersion = d.TcVersion.String()
+				dev.RuntimeStatus = d.IsRuntime // Basis: UDP (TC3 oft "no Info")
+				if dev.Hostname == "" && d.Hostname != "" {
+					dev.Hostname = d.Hostname
 				}
+				dev.LastUpdate = time.Now()
 			}
 		}
 		inventoryMutex.Unlock()
 
-		// Ping/MAC/DNS parallel (wie bisher)
-		jobs := make(chan string, 254)
-		var wg sync.WaitGroup
+		// ADS Route + ReadState (RUN/STOP): nur für UDP gefundene Targets
+		localIP, _, lipErr := getLocalLabIPv4()
+		if lipErr != nil {
+			fmt.Println("Local IP error:", lipErr)
+		} else {
+			type job struct {
+				ip    string
+				netid string
+			}
+			targets := make([]job, 0, len(plcs))
+			for _, d := range plcs {
+				if d.AmsNetID == "" {
+					continue
+				}
+				targets = append(targets, job{
+					ip:    d.Address.String(),
+					netid: d.AmsNetID,
+				})
+			}
+
+			const workers = 8
+			const showErrorsInUI = true // zum Debug; später auf false
+
+			jobs := make(chan job, len(targets))
+			var wg sync.WaitGroup
+
+			for w := 0; w < workers; w++ {
+				wg.Add(1)
+				go func() {
+					defer wg.Done()
+					for j := range jobs {
+						remoteIP := net.ParseIP(j.ip).To4()
+						if remoteIP == nil {
+							continue
+						}
+
+						cctx, cancel := context.WithTimeout(context.Background(), 6*time.Second)
+						res := TryReadPlcState(cctx, localIP, remoteIP, j.netid)
+						cancel()
+
+						inventoryMutex.Lock()
+						if dev, ok := inventory[j.ip]; ok {
+							if res.Err == "" && res.Status != "" {
+								dev.RuntimeStatus = res.Status // RUN/STOP/...
+							} else if showErrorsInUI {
+								dev.RuntimeStatus = fmt.Sprintf("%s (%s)", res.Status, res.Err)
+							}
+							dev.LastUpdate = time.Now()
+						}
+						inventoryMutex.Unlock()
+					}
+				}()
+			}
+
+			for _, t := range targets {
+				jobs <- t
+			}
+			close(jobs)
+			wg.Wait()
+		}
+
+		// Ping/MAC/DNS parallel
+		pingJobs := make(chan string, 254)
+		var wgPing sync.WaitGroup
+
 		for w := 1; w <= 20; w++ {
-			wg.Add(1)
+			wgPing.Add(1)
 			go func() {
-				defer wg.Done()
-				for ip := range jobs {
+				defer wgPing.Done()
+				for ip := range pingJobs {
 					reachable := pingDevice(ip)
 
 					var mac, host string
@@ -154,16 +201,22 @@ func runDiscovery() {
 						mac = getMACAddress(ip)
 						host = getHostname(ip)
 					}
+					now := time.Now()
 
 					inventoryMutex.Lock()
-					if device, ok := inventory[ip]; ok {
-						device.IsReachable = reachable
-						device.MACAddress = mac
-						// DNS-Hostname überschreibt UDP-Hostname nicht (nur wenn DNS was liefert)
-						if host != "" {
-							device.Hostname = host
+					if dev, ok := inventory[ip]; ok {
+						dev.IsReachable = reachable
+						dev.LastScan = now
+
+						if reachable {
+							dev.LastSeenOnline = now
+							if mac != "" {
+								dev.MACAddress = mac
+							}
+							if host != "" {
+								dev.Hostname = host
+							}
 						}
-						device.LastUpdate = time.Now()
 					}
 					inventoryMutex.Unlock()
 				}
@@ -171,16 +224,19 @@ func runDiscovery() {
 		}
 
 		for i := 1; i <= 254; i++ {
-			jobs <- fmt.Sprintf("172.17.76.%d", i)
+			pingJobs <- fmt.Sprintf("172.17.76.%d", i)
 		}
-		close(jobs)
-		wg.Wait()
+		close(pingJobs)
+		wgPing.Wait()
 
+		// Semaphore frei
 		inventoryMutex.Lock()
 		isScanning = false
 		inventoryMutex.Unlock()
+		if err := saveSnapshot(); err != nil {
+			fmt.Println("Snapshot save error:", err)
+		}
 
-		fmt.Println("Scan abgeschlossen. Warte 2 Minuten...")
-		time.Sleep(2 * time.Minute)
+		fmt.Println("Scan abgeschlossen.", time.Now().Format("15:04:05"))
 	}
 }

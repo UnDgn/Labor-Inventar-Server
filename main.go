@@ -13,6 +13,13 @@ import (
 
 func handleTriggerScan(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Manueller Scan-Trigger empfangen.")
+
+	// Nicht blockieren, wenn schon ein Trigger ansteht
+	select {
+	case scanTrigger <- struct{}{}:
+	default:
+	}
+
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -89,7 +96,7 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
                     <tr>
                         <th>Status</th><th>IP-Adresse</th><th>Hostname</th><th>Büro</th>
                         <th>MAC-Adresse</th><th>OS Version</th><th>AMS Net-ID</th>
-                        <th>TwinCAT</th><th>Runtime</th>
+                        <th>TwinCAT</th><th>Runtime</th><th>Zuletzt online</th>
                     </tr>
                 </thead>
                 <tbody>`)
@@ -109,20 +116,28 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 	})
 
 	for _, device := range devices {
+		var lastSeenStr string
+		if !device.LastSeenOnline.IsZero() {
+			lastSeenStr = device.LastSeenOnline.Format("02.01.2006 15:04:05")
+		} else {
+			lastSeenStr = "-"
+		}
 		statusClass, statusText := "status-offline", "Offline"
 		if device.IsReachable {
 			statusClass, statusText = "status-online", "Online"
 		}
+
 		fmt.Fprintf(w, `<tr>
                 <td class="%s">%s</td>
                 <td><strong>%s</strong></td>
                 <td>%s</td><td>%s</td>
                 <td class="mac-font">%s</td>
                 <td>%s</td><td>%s</td><td>%s</td><td>%s</td>
+                <td>%s</td>
             </tr>`,
 			statusClass, statusText, device.IP, device.Hostname,
 			device.Office, device.MACAddress, device.OSVersion,
-			device.AmsNetID, device.TwinCATVersion, device.RuntimeStatus)
+			device.AmsNetID, device.TwinCATVersion, device.RuntimeStatus, lastSeenStr)
 	}
 	inventoryMutex.Unlock()
 
@@ -132,6 +147,11 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 // --- 7. MAIN ---
 
 func main() {
+	//Snapshot laden
+	if err := loadSnapshot(); err != nil {
+		fmt.Println("Snapshot load error:", err)
+	}
+	go runDiscovery()
 	go runDiscovery()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -143,7 +163,7 @@ func main() {
 
 	fmt.Println("Beckhoff Inventar-Server Online")
 	fmt.Printf("Lokal: http://localhost:%d\n", port)
-	fmt.Printf("Netz:  http://172.17.76.43:%d\n", port)
+	fmt.Printf("Netz:  http://172.17.76.23:%d\n", port)
 	fmt.Println("-----------------------------------------------")
 
 	_ = http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", port), nil)
