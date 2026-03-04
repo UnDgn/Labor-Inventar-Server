@@ -9,6 +9,29 @@ import (
 	"time"
 )
 
+func formatRelativeTime(t time.Time) string {
+	if t.IsZero() {
+		return "-"
+	}
+
+	diff := time.Since(t)
+
+	if diff < time.Minute {
+		return "gerade eben"
+	}
+	if diff < time.Hour {
+		return fmt.Sprintf("%d min", int(diff.Minutes()))
+	}
+	if diff < 24*time.Hour {
+		return fmt.Sprintf("%d h", int(diff.Hours()))
+	}
+	if diff < 7*24*time.Hour {
+		return fmt.Sprintf("%d d", int(diff.Hours()/24))
+	}
+
+	return fmt.Sprintf("%d w", int(diff.Hours()/24/7))
+}
+
 // --- 6. WEB HANDLER ---
 
 func handleTriggerScan(w http.ResponseWriter, r *http.Request) {
@@ -48,6 +71,30 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
             .btn-scan { background-color: #ce1126; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
             .btn-scan:hover { background-color: #a00d1d; }
             .btn-scan:disabled { background-color: #ccc; }
+			th[draggable="true"] { cursor: grab; user-select: none; }
+			th.dragging { opacity: 0.5; }
+			th.drag-over { outline: 2px dashed rgba(255,255,255,0.7); outline-offset: -6px; }
+			
+            .ip-cell {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .rdp-icon {
+                text-decoration: none;
+                font-size: 1.05em;
+                color: #0078d4;
+            }
+
+            .rdp-icon:hover {
+                transform: scale(1.15);
+            }
+
+            .rdp-icon.disabled {
+                opacity: 0.25;
+                cursor: default;
+            }
 
             .stats-bar {
                 display: flex;
@@ -139,20 +186,25 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
                 <div class="stat-item stat-offline">Offline: <strong>%d</strong></div>
             </div>
 `, knownCount, onlineCount, offlineCount)
-
+	fmt.Fprint(w, "<!-- DEBUG: starting table -->")
 	// 4) Tabelle starten
 	fmt.Fprint(w, `
             <table id="deviceTable">
-                <thead>
-                    <tr>
-                        <th>Status</th><th>IP-Adresse</th><th>Hostname</th><th>Büro</th>
-                        <th>MAC-Adresse</th><th>OS Version</th><th>AMS Net-ID</th>
-                        <th>TwinCAT</th><th>Runtime</th><th>Zuletzt online</th>
-                    </tr>
-                </thead>
+					 <thead>
+					  <tr id="headerRow">
+					    <th data-col="status" draggable="true">Status</th>
+					    <th data-col="ip" draggable="true">IP-Adresse</th>
+					    <th data-col="hostname" draggable="true">Hostname</th>
+					    <th data-col="mac" draggable="true">MAC-Adresse</th>
+					    <th data-col="os" draggable="true">OS Version</th>
+					    <th data-col="ams" draggable="true">AMS Net-ID</th>
+					    <th data-col="twincat" draggable="true">TwinCAT</th>
+					    <th data-col="runtime" draggable="true">Runtime</th>
+					    <th data-col="lastonline" draggable="true">Zuletzt online</th>
+					  </tr>
+					</thead>
                 <tbody>
 `)
-
 	// 5) Sortieren (ohne Lock)
 	sort.Slice(devices, func(i, j int) bool {
 		if devices[i].IsReachable != devices[j].IsReachable {
@@ -169,7 +221,17 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 		if device.IsReachable {
 			lastSeenStr = "<span style='color:#28a745;font-weight:bold;'>Jetzt</span>"
 		} else if !device.LastSeenOnline.IsZero() {
-			lastSeenStr = device.LastSeenOnline.Format("02.01.2006 15:04:05")
+
+			relative := formatRelativeTime(device.LastSeenOnline)
+			absolute := device.LastSeenOnline.Format("02.01.2006 15:04:05")
+
+			lastSeenStr = fmt.Sprintf(`
+        <div style="line-height:1.2">
+            <div>%s</div>
+            <div style="font-size:0.75em;color:#888;">(%s)</div>
+        </div>
+    `, relative, absolute)
+
 		} else {
 			lastSeenStr = "-"
 		}
@@ -178,25 +240,43 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 		if device.IsReachable {
 			statusClass, statusText = "status-online", "Online"
 		}
+		var rdpButton string
+
+		if device.IsReachable {
+			rdpButton = fmt.Sprintf(`<a href="beckhoff-rdp://%s" class="rdp-icon" title="RDP öffnen">🖥</a>`, device.IP)
+		} else {
+			rdpButton = `<span class="rdp-icon disabled">🖥</span>`
+		}
 
 		fmt.Fprintf(w, `<tr>
-                <td class="%s">%s</td>
-                <td><strong>%s</strong></td>
-                <td>%s</td><td>%s</td>
-                <td class="mac-font">%s</td>
-                <td>%s</td><td>%s</td><td>%s</td><td>%s</td>
-                <td>%s</td>
-            </tr>`,
-			statusClass, statusText, device.IP, device.Hostname,
-			device.Office, device.MACAddress, device.OSVersion,
-			device.AmsNetID, device.TwinCATVersion, device.RuntimeStatus, lastSeenStr)
+		  <td data-col="status" class="%s">%s</td>
+		  <td data-col="ip" class="ip-cell">%s<strong>%s</strong></td>
+		  <td data-col="hostname">%s</td>
+		  <td data-col="mac" class="mac-font">%s</td>
+		  <td data-col="os">%s</td>
+		  <td data-col="ams">%s</td>
+		  <td data-col="twincat">%s</td>
+		  <td data-col="runtime">%s</td>
+		  <td data-col="lastonline">%s</td>
+		</tr>`,
+			statusClass, statusText,
+			rdpButton, device.IP,
+			device.Hostname,
+			device.MACAddress,
+			device.OSVersion,
+			device.AmsNetID,
+			device.TwinCATVersion,
+			device.RuntimeStatus,
+			lastSeenStr,
+		)
 	}
-
 	// 7) HTML schließen
 	fmt.Fprint(w, `
                 </tbody>
             </table>
         </div>
+
+        <script src="/static/app.js"></script>
     </body>
     </html>
 `)
