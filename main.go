@@ -27,6 +27,7 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	lastUpdateStr := time.Now().Format("15:04:05")
 
+	// 1) Grund-HTML bis Header-Bar (OHNE Tabelle)
 	fmt.Fprint(w, `
     <html>
     <head>
@@ -34,7 +35,7 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
             body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; }
             .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
-            .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 20px; }
+            .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 20px; }
             .logo-section { display: flex; align-items: center; gap: 15px; min-width: 300px; }
 
             .search-group { position: relative; flex-grow: 1; max-width: 400px; }
@@ -48,7 +49,22 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
             .btn-scan:hover { background-color: #a00d1d; }
             .btn-scan:disabled { background-color: #ccc; }
 
-            table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+            .stats-bar {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                margin: 0 0 12px 0;
+                padding: 10px 12px;
+                border: 1px solid #eee;
+                border-radius: 6px;
+                background: #fafafa;
+                font-size: 0.9em;
+            }
+            .stat-item { color: #333; }
+            .stat-online { color: #28a745; font-weight: 600; }
+            .stat-offline { color: #999; font-weight: 600; }
+
+            table { border-collapse: collapse; width: 100%; margin-top: 0px; }
             th { background-color: #ce1126; color: white; padding: 12px; text-align: left; font-size: 0.85em; position: sticky; top: 0; }
             td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85em; }
             .status-online { color: #28a745; font-weight: bold; }
@@ -90,7 +106,42 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
                     <button id="scanBtn" class="btn-scan" onclick="startScan()">Scan</button>
                 </div>
             </div>
+`)
 
+	// 2) Geräte-Liste kopieren + Statistik zählen (kurzer Lock)
+	inventoryMutex.Lock()
+	var devices []*IPC
+	onlineCount := 0
+	offlineCount := 0
+	knownCount := 0
+
+	for _, dev := range inventory {
+		devices = append(devices, dev)
+
+		if dev.IsReachable {
+			onlineCount++
+		} else {
+			offlineCount++
+		}
+
+		// "Erkannt" = hat mindestens ein Merkmal (MAC / Hostname / AMS)
+		if dev.MACAddress != "" || dev.Hostname != "" || dev.AmsNetID != "" {
+			knownCount++
+		}
+	}
+	inventoryMutex.Unlock()
+
+	// 3) Statistik-Bar (jetzt ist sie WIRKLICH oberhalb der Tabelle)
+	fmt.Fprintf(w, `
+            <div class="stats-bar">
+                <div class="stat-item">Erkannt: <strong>%d</strong></div>
+                <div class="stat-item stat-online">Online: <strong>%d</strong></div>
+                <div class="stat-item stat-offline">Offline: <strong>%d</strong></div>
+            </div>
+`, knownCount, onlineCount, offlineCount)
+
+	// 4) Tabelle starten
+	fmt.Fprint(w, `
             <table id="deviceTable">
                 <thead>
                     <tr>
@@ -99,13 +150,10 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
                         <th>TwinCAT</th><th>Runtime</th><th>Zuletzt online</th>
                     </tr>
                 </thead>
-                <tbody>`)
+                <tbody>
+`)
 
-	inventoryMutex.Lock()
-	var devices []*IPC
-	for _, dev := range inventory {
-		devices = append(devices, dev)
-	}
+	// 5) Sortieren (ohne Lock)
 	sort.Slice(devices, func(i, j int) bool {
 		if devices[i].IsReachable != devices[j].IsReachable {
 			return devices[i].IsReachable
@@ -115,9 +163,9 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 		return bytes.Compare(ipI, ipJ) < 0
 	})
 
+	// 6) Rows rendern
 	for _, device := range devices {
 		var lastSeenStr string
-
 		if device.IsReachable {
 			lastSeenStr = "<span style='color:#28a745;font-weight:bold;'>Jetzt</span>"
 		} else if !device.LastSeenOnline.IsZero() {
@@ -125,6 +173,7 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 		} else {
 			lastSeenStr = "-"
 		}
+
 		statusClass, statusText := "status-offline", "Offline"
 		if device.IsReachable {
 			statusClass, statusText = "status-online", "Online"
@@ -142,9 +191,15 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 			device.Office, device.MACAddress, device.OSVersion,
 			device.AmsNetID, device.TwinCATVersion, device.RuntimeStatus, lastSeenStr)
 	}
-	inventoryMutex.Unlock()
 
-	fmt.Fprint(w, "</tbody></table></div></body></html>")
+	// 7) HTML schließen
+	fmt.Fprint(w, `
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+`)
 }
 
 // --- 7. MAIN ---
@@ -166,8 +221,16 @@ func main() {
 
 	fmt.Println("Beckhoff Inventar-Server Online")
 	fmt.Printf("Lokal: http://localhost:%d\n", port)
-	fmt.Printf("Netz:  http://172.17.76.23:%d\n", port)
+
+	if ip, _, err := getLocalLabIPv4(); err == nil {
+		fmt.Printf("Netz:  http://%s:%d\n", ip.String(), port)
+	} else {
+		fmt.Println("Netz:  (keine 172.17.76.x Adresse gefunden)")
+	}
+
 	fmt.Println("-----------------------------------------------")
 
-	_ = http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", port), nil)
+	if err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", port), nil); err != nil {
+		fmt.Println("ListenAndServe error:", err)
+	}
 }
