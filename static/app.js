@@ -48,26 +48,37 @@
     }
   }
 
-  function enableDragDrop() {
+function enableDragDrop() {
   const headerRow = document.getElementById("headerRow");
+  if (!headerRow) {
+    console.warn("DND: headerRow not found");
+    return;
+  }
+
+  const ths = headerRow.querySelectorAll("th[draggable='true']");
+  if (!ths || ths.length === 0) {
+    console.warn("DND: no draggable th found");
+    return;
+  }
+
   let dragged = null;
 
-  headerRow.querySelectorAll("th[draggable='true']").forEach(th => {
-
+  ths.forEach(th => {
     th.addEventListener("dragstart", (e) => {
       dragged = th;
       th.classList.add("dragging");
 
-      // Edge/Chrome robust:
       e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.dropEffect = "move";
-      e.dataTransfer.setData("text/plain", th.dataset.col || "x");
+      // Chrome braucht setData(), sonst "verboten" Icon
+      e.dataTransfer.setData("text/plain", th.dataset.col || "");
     });
 
     th.addEventListener("dragend", () => {
       th.classList.remove("dragging");
       headerRow.querySelectorAll("th").forEach(x => x.classList.remove("drag-over"));
       dragged = null;
+
+      // ✅ speichern (Backup, falls drop nicht feuert)
       saveOrder();
     });
 
@@ -76,8 +87,7 @@
       e.dataTransfer.dropEffect = "move";
     });
 
-    th.addEventListener("dragenter", (e) => {
-      e.preventDefault();
+    th.addEventListener("dragenter", () => {
       if (th !== dragged) th.classList.add("drag-over");
     });
 
@@ -97,20 +107,115 @@
       if (before) headerRow.insertBefore(dragged, th);
       else headerRow.insertBefore(dragged, th.nextSibling);
 
+      // Body an Header-Reihenfolge anpassen
       applyColumnOrder(getCurrentOrderFromHeader());
+
+      // ✅ HIER speichern!
+      saveOrder();
     });
   });
 
-    console.log("DND: enabled for", ths.length, "columns");
-  }
+  console.log("DND: enabled for", ths.length, "columns");
+}
 
-  function resetColumns() {
-    localStorage.removeItem(COL_ORDER_KEY);
-    location.reload();
-  }
 
   window.addEventListener("DOMContentLoaded", () => {
-    const order = loadOrder();
-    if (order) applyColumnOrder(order);
-    enableDragDrop();
+  const order = loadOrder();
+  if (order) applyColumnOrder(order);
+
+  applySavedWidths();
+  enableDragDrop();
+  enableColumnResize();
+  
+});
+
+  const COL_WIDTH_KEY = "inventory_col_width_v1";
+
+function saveWidths(widths) {
+  localStorage.setItem(COL_WIDTH_KEY, JSON.stringify(widths));
+}
+
+function loadWidths() {
+  try {
+    const raw = localStorage.getItem(COL_WIDTH_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function applySavedWidths() {
+  const widths = loadWidths();
+  const cols = document.querySelectorAll(`#deviceTable colgroup col`);
+  cols.forEach(col => {
+    const key = col.dataset.col;
+    if (widths[key]) col.style.width = widths[key] + "px";
   });
+}
+
+function enableColumnResize() {
+  const table = document.getElementById("deviceTable");
+  const headerRow = document.getElementById("headerRow");
+  if (!table || !headerRow) return;
+
+  // col elements by key
+  const colEls = {};
+  document.querySelectorAll("#deviceTable colgroup col").forEach(c => {
+    colEls[c.dataset.col] = c;
+  });
+
+  function resetColumns() {
+  localStorage.removeItem(COL_ORDER_KEY);
+  localStorage.removeItem(COL_WIDTH_KEY);
+  location.reload();
+}
+  window.resetColumns = resetColumns;
+  const widths = loadWidths();
+
+  headerRow.querySelectorAll("th").forEach(th => {
+    const key = th.dataset.col;
+    const handle = th.querySelector(".col-resizer");
+    if (!handle || !key) return;
+
+    // ganz wichtig: Drag auf dem Resizer blocken
+    handle.addEventListener("dragstart", (e) => e.preventDefault());
+
+    handle.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 🔥 Konfliktfix: während Resize kein HTML5-DND
+      const wasDraggable = th.draggable;
+      th.draggable = false;
+
+      const startX = e.clientX;
+      const startW = th.getBoundingClientRect().width;
+
+      const onMove = (ev) => {
+        const dx = ev.clientX - startX;
+        const newW = Math.max(70, Math.round(startW + dx));
+
+        widths[key] = newW;
+
+        // Primär über colgroup
+        if (colEls[key]) colEls[key].style.width = newW + "px";
+
+        // Fallback (hilft manchmal bei sticky/Chrome):
+        th.style.width = newW + "px";
+      };
+
+      const onUp = () => {
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseup", onUp);
+
+        // draggable wieder zurück
+        th.draggable = wasDraggable;
+
+        saveWidths(widths);
+      };
+
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", onUp);
+    });
+  });
+}
