@@ -227,6 +227,12 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
   pointer-events: none;
 }
 
+.active-filter {
+  background-color: #ce1126;
+  color: white;
+  border-color: #ce1126;
+}
+
             .stats-bar {
                 display: flex;
                 gap: 15px;
@@ -284,6 +290,7 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
                     <div class="last-refresh">Refreshed: <strong>`+m.LastUpdateStr+`</strong></div>
                     <button id="scanBtn" class="btn-scan" onclick="startScan()">Scan</button>
 					<button class="btn-reset" onclick="resetColumns()" title="Spaltenlayout zurücksetzen">Reset</button>
+                    <button id="favFilterBtn" class="btn-reset" onclick="toggleFavoriteFilter()" title="Nur Favoriten anzeigen">Nur Favoriten</button>
                 </div>
             </div>
 `)

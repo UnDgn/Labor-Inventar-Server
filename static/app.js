@@ -128,7 +128,8 @@ function enableDragDrop() {
   enableColumnResize();
   applyFavoritesUI();
   enableFavorites();
-  
+  sortTableWithFavorites();
+  applyFavoriteFilter();
 });
 
   const COL_WIDTH_KEY = "inventory_col_width_v1";
@@ -156,6 +157,7 @@ function applySavedWidths() {
 }
 
 const FAV_KEY = "inventory_favs_v1";
+const FAV_FILTER_KEY = "inventory_fav_filter_v1";
 
 function loadFavorites() {
   try {
@@ -200,7 +202,8 @@ function enableFavorites() {
 
     saveFavorites(favs);
     applyFavoritesUI();
-    
+    sortTableWithFavorites();
+    applyFavoriteFilter();
   });
 }
 
@@ -226,6 +229,101 @@ function sortFavorites() {
   });
 
   rows.forEach(row => tbody.appendChild(row));
+}
+
+function sortTableWithFavorites() {
+  const tbody = document.querySelector("#deviceTable tbody");
+  if (!tbody) return;
+
+  const favs = loadFavorites();
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+
+  rows.sort((a, b) => {
+    const aBtn = a.querySelector(".fav-btn[data-fav]");
+    const bBtn = b.querySelector(".fav-btn[data-fav]");
+
+    const aFav = aBtn && favs[aBtn.dataset.fav];
+    const bFav = bBtn && favs[bBtn.dataset.fav];
+
+    // 1. Favoriten zuerst
+    if (aFav && !bFav) return -1;
+    if (!aFav && bFav) return 1;
+
+    // 2. Online vor Offline
+    const aStatus = a.querySelector('td[data-col="status"]')?.textContent.trim() || "";
+    const bStatus = b.querySelector('td[data-col="status"]')?.textContent.trim() || "";
+
+    const aOnline = aStatus === "Online";
+    const bOnline = bStatus === "Online";
+
+    if (aOnline && !bOnline) return -1;
+    if (!aOnline && bOnline) return 1;
+
+    // 3. Nach IP sortieren
+    const aIP = a.querySelector('td[data-col="ip"] strong')?.textContent.trim() || "";
+    const bIP = b.querySelector('td[data-col="ip"] strong')?.textContent.trim() || "";
+
+    return compareIPs(aIP, bIP);
+  });
+
+  rows.forEach(row => tbody.appendChild(row));
+}
+
+function compareIPs(ip1, ip2) {
+  const a = ip1.split(".").map(Number);
+  const b = ip2.split(".").map(Number);
+
+  for (let i = 0; i < 4; i++) {
+    if ((a[i] || 0) < (b[i] || 0)) return -1;
+    if ((a[i] || 0) > (b[i] || 0)) return 1;
+  }
+  return 0;
+}
+
+function isFavoriteFilterActive() {
+  return localStorage.getItem(FAV_FILTER_KEY) === "1";
+}
+
+function setFavoriteFilter(active) {
+  localStorage.setItem(FAV_FILTER_KEY, active ? "1" : "0");
+}
+
+function applyFavoriteFilter() {
+  const favs = loadFavorites();
+  const active = isFavoriteFilterActive();
+
+  document.querySelectorAll("#deviceTable tbody tr").forEach(row => {
+    const btn = row.querySelector(".fav-btn[data-fav]");
+    const key = btn?.dataset?.fav || "";
+    const isFav = !!favs[key];
+
+    if (!active) {
+      row.style.display = "";
+    } else {
+      row.style.display = isFav ? "" : "none";
+    }
+  });
+
+  updateFavoriteFilterButton();
+}
+
+function toggleFavoriteFilter() {
+  const active = isFavoriteFilterActive();
+  setFavoriteFilter(!active);
+  applyFavoriteFilter();
+}
+
+function updateFavoriteFilterButton() {
+  const btn = document.getElementById("favFilterBtn");
+  if (!btn) return;
+
+  if (isFavoriteFilterActive()) {
+    btn.textContent = "Alle";
+    btn.classList.add("active-filter");
+  } else {
+    btn.textContent = "Nur Favoriten";
+    btn.classList.remove("active-filter");
+  }
 }
 
 function enableColumnResize() {
