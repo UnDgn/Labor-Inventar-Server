@@ -164,10 +164,67 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
                 cursor: default;
             }
 
-td[data-col="status"],
-th[data-col="status"] {
+/* kompakte Standard-Spaltenbreiten */
+th[data-col="fav"],
+td[data-col="fav"]{
+  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: center;
+}
+
+th[data-col="status"], td[data-col="status"] {
   width: 80px;
+  min-width: 80px;
+  max-width: 80px;
   padding-right: 4px;
+}
+
+th[data-col="ip"], td[data-col="ip"] {
+  width: 150px;          /* passt 255.255.255.255 + Icon */
+  min-width: 150px;
+  max-width: 170px;      /* optional: verhindert "zu breit" */
+}
+
+th[data-col="twincat"], td[data-col="twincat"] {
+  width: 95px;           /* passt z.B. 3.1.4026 */
+  min-width: 95px;
+  max-width: 110px;
+}
+
+th[data-col="lastonline"], td[data-col="lastonline"] {
+  width: 140px;          /* passt "vor 2 Tagen" + (03.03.2026 10:23:07) */
+  min-width: 170px;
+  max-width: 250px;      /* optional */
+}
+
+/* Damit lange Inhalte nicht alles sprengen */
+#deviceTable { table-layout: fixed; }
+#deviceTable th, #deviceTable td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+            /* Favoriten-Button einheitlich */
+.fav-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+.fav-btn.is-fav {
+  color: #ce1126;
+  font-weight: bold;
+}
+
+.fav-btn:hover { transform: scale(1.2); }
+
+.fav-btn.disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
 }
 
             .stats-bar {
@@ -244,6 +301,7 @@ th[data-col="status"] {
 	fmt.Fprint(w, `
 <table id="deviceTable">
   <colgroup>
+    <col data-col="fav">
     <col data-col="status">
     <col data-col="ip">
     <col data-col="hostname">
@@ -256,6 +314,7 @@ th[data-col="status"] {
   </colgroup>
   <thead>
     <tr id="headerRow">
+	  <th data-col="fav" draggable="true">★<span class="col-resizer"></span></th>
       <th data-col="status" draggable="true">Status<span class="col-resizer"></span></th>
       <th data-col="ip" draggable="true">IP-Adresse<span class="col-resizer"></span></th>
       <th data-col="hostname" draggable="true">Hostname<span class="col-resizer"></span></th>
@@ -299,7 +358,17 @@ th[data-col="status"] {
 			rdpButton = fmt.Sprintf(`<a href="beckhoff-rdp://%s" class="rdp-icon" title="RDP öffnen">🖥</a>`, device.IP)
 		}
 
+		favCell := fmt.Sprintf(
+			`<button class="fav-btn" data-fav="%s" title="Favorit umschalten">☆</button>`,
+			device.MACAddress,
+		)
+
+		if device.MACAddress == "" {
+			favCell = `<button class="fav-btn disabled" title="Keine MAC verfügbar" disabled>☆</button>`
+		}
+
 		fmt.Fprintf(w, `<tr>
+		  <td data-col="fav" class="fav-cell">%s</td>
 		  <td data-col="status" class="%s">%s</td>
 		  <td data-col="ip" class="ip-cell">%s<strong>%s</strong></td>
 		  <td data-col="hostname">%s</td>
@@ -310,6 +379,7 @@ th[data-col="status"] {
 		  <td data-col="runtime">%s</td>
 		  <td data-col="lastonline">%s</td>
 		</tr>`,
+			favCell,
 			statusClass, statusText,
 			rdpButton, device.IP,
 			device.Hostname,

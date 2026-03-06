@@ -126,6 +126,8 @@ function enableDragDrop() {
   applySavedWidths();
   enableDragDrop();
   enableColumnResize();
+  applyFavoritesUI();
+  enableFavorites();
   
 });
 
@@ -151,6 +153,79 @@ function applySavedWidths() {
     const key = col.dataset.col;
     if (widths[key]) col.style.width = widths[key] + "px";
   });
+}
+
+const FAV_KEY = "inventory_favs_v1";
+
+function loadFavorites() {
+  try {
+    const raw = localStorage.getItem(FAV_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveFavorites(favs) {
+  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+}
+
+function applyFavoritesUI() {
+  const favs = loadFavorites();
+  sortFavorites(favs);
+  document.querySelectorAll(".fav-btn[data-fav]").forEach(btn => {
+    const key = btn.dataset.fav;
+    const isFav = !!favs[key];
+sortFavorites(favs);
+    btn.classList.toggle("is-fav", isFav);
+    btn.textContent = isFav ? "★" : "☆";
+  });
+}
+
+function enableFavorites() {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".fav-btn[data-fav]");
+    if (!btn || btn.classList.contains("disabled")) return;
+
+    const key = btn.dataset.fav;
+    if (!key) return;
+
+    const favs = loadFavorites();
+
+    if (favs[key]) {
+      delete favs[key];
+    } else {
+      favs[key] = true;
+    }
+
+    saveFavorites(favs);
+    applyFavoritesUI();
+    
+  });
+}
+
+function sortFavorites() {
+  const tbody = document.querySelector("#deviceTable tbody");
+  if (!tbody) return;
+
+  const favs = loadFavorites();
+
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+
+  rows.sort((a, b) => {
+    const aBtn = a.querySelector(".fav-btn[data-fav]");
+    const bBtn = b.querySelector(".fav-btn[data-fav]");
+
+    const aFav = aBtn && favs[aBtn.dataset.fav];
+    const bFav = bBtn && favs[bBtn.dataset.fav];
+
+    if (aFav && !bFav) return -1;
+    if (!aFav && bFav) return 1;
+
+    return 0;
+  });
+
+  rows.forEach(row => tbody.appendChild(row));
 }
 
 function enableColumnResize() {
@@ -219,3 +294,4 @@ function enableColumnResize() {
     });
   });
 }
+
