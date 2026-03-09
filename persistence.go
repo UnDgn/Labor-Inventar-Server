@@ -26,7 +26,6 @@ func snapshotPath() (string, error) {
 }
 
 // loadSnapshot loads the last snapshot into the in-memory inventory.
-// If the file doesn't exist, it's not an error.
 func loadSnapshot() error {
 	path, err := snapshotPath()
 	if err != nil {

@@ -15,12 +15,14 @@ type IPC struct {
 	IP             string
 	IsReachable    bool
 	Office         string
+	Comment        string
 	MACAddress     string
 	Hostname       string
 	OSVersion      string
 	AmsNetID       string
 	TwinCATVersion string
 	RuntimeStatus  string
+	DeviceType     string
 	LastUpdate     time.Time
 	LastScan       time.Time // wann zuletzt geprüft (egal ob online)
 	LastSeenOnline time.Time // wann zuletzt online gesehen
@@ -63,7 +65,7 @@ func runDiscovery() {
 	case scanTrigger <- struct{}{}:
 	default:
 	}
-	ticker := time.NewTicker(5 * time.Minute)
+	ticker := time.NewTicker(10 * time.Minute)
 	defer ticker.Stop()
 
 	for {
@@ -221,6 +223,11 @@ func runDiscovery() {
 							if host != "" {
 								dev.Hostname = host
 							}
+
+						}
+						if dev.MACAddress != "" {
+							dev.Office = getOfficeForMAC(dev.MACAddress)
+							dev.Comment = getCommentForMAC(dev.MACAddress)
 						}
 					}
 					inventoryMutex.Unlock()

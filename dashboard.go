@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/http"
 	"sort"
+	"text/template"
 	"time"
 )
 
@@ -145,8 +146,9 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
 
             .ip-cell {
                 display: flex;
-                align-items: center;
+                align-items: top;
                 gap: 6px;
+                min-height: 34px;
             }
 
             .rdp-icon {
@@ -185,11 +187,49 @@ th[data-col="status"], td[data-col="status"] {
 th[data-col="ip"], td[data-col="ip"] {
   width: 150px;          /* passt 255.255.255.255 + Icon */
   min-width: 150px;
-  max-width: 170px;      /* optional: verhindert "zu breit" */
+  max-width: 170px;      
+}
+
+th[data-col="office"],
+td[data-col="office"] {
+  width: 75px;
+  min-width: 65px;
+  max-width: 100px;
+}
+
+.office-select {
+  width: 100%;
+  font-size: 0.85em;
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+th[data-col="comment"],
+td[data-col="comment"] {
+  width: 280px;
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.comment-input {
+  width: 100%;
+  height: 34px;
+  min-height: 34px;
+  resize: vertical;
+  overflow-y: auto;
+  font-size: 0.95em;
+  line-height: 1.3;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 th[data-col="twincat"], td[data-col="twincat"] {
-  width: 95px;           /* passt z.B. 3.1.4026 */
+  width: 95px;           
   min-width: 95px;
   max-width: 110px;
 }
@@ -250,18 +290,36 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 
             table { border-collapse: collapse; width: 100%; margin-top: 0px; }
             th { background-color: #ce1126; color: white; padding: 12px; text-align: left; font-size: 0.85em; position: sticky; top: 0; }
-            td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85em; }
+            td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85em; vertical-align: top; }
             .status-online { color: #28a745; font-weight: bold; }
             .status-offline { color: #ccc; }
         </style>
         <script>
-            function filterTable() {
-                let filter = document.getElementById("searchInput").value.toUpperCase();
-                let rows = document.querySelector("#deviceTable tbody").rows;
-                for (let row of rows) {
-                    row.style.display = row.textContent.toUpperCase().includes(filter) ? "" : "none";
-                }
-            }
+           function filterTable() {
+  const filter = document.getElementById("searchInput").value.toUpperCase();
+  const rows = document.querySelectorAll("#deviceTable tbody tr");
+
+  rows.forEach(row => {
+    const office = (row.dataset.office || "").toUpperCase();
+
+    // Zeilentext ohne die Select-Optionen der Bürospalte
+    let rowText = "";
+    row.querySelectorAll("td").forEach(td => {
+      if (td.dataset.col === "office") {
+        const select = td.querySelector("select");
+        if (select) {
+          rowText += " " + (select.value || "");
+        }
+      } else {
+        rowText += " " + td.textContent;
+      }
+    });
+
+    rowText = rowText.toUpperCase();
+
+    row.style.display = rowText.includes(filter) || office.includes(filter) ? "" : "none";
+  });
+}
 
             function startScan() {
                 const btn = document.getElementById("scanBtn");
@@ -312,6 +370,8 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
     <col data-col="status">
     <col data-col="ip">
     <col data-col="hostname">
+    <col data-col="office">
+    <col data-col="comment">
     <col data-col="mac">
     <col data-col="os">
     <col data-col="ams">
@@ -325,6 +385,8 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
       <th data-col="status" draggable="true">Status<span class="col-resizer"></span></th>
       <th data-col="ip" draggable="true">IP-Adresse<span class="col-resizer"></span></th>
       <th data-col="hostname" draggable="true">Hostname<span class="col-resizer"></span></th>
+      <th data-col="office" draggable="true">Büro<span class="col-resizer"></span></th>
+      <th data-col="comment" draggable="true">Kommentar<span class="col-resizer"></span></th>
       <th data-col="mac" draggable="true">MAC-Adresse<span class="col-resizer"></span></th>
       <th data-col="os" draggable="true">OS Version<span class="col-resizer"></span></th>
       <th data-col="ams" draggable="true">AMS Net-ID<span class="col-resizer"></span></th>
@@ -373,12 +435,50 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 		if device.MACAddress == "" {
 			favCell = `<button class="fav-btn disabled" title="Keine MAC verfügbar" disabled>☆</button>`
 		}
+		officeOptions := []string{
+			"",
+			"T4015", "T4016", "T4017", "T4018", "T4019",
+			"T4020", "T4021", "T4022", "T4023", "T4024",
+			"T4025", "T4026", "T4027", "T4028", "T4029",
+			"T4030", "T4031", "T4032", "T4033", "T4034",
+			"T4035", "T4036", "T4037", "T4038",
+		}
 
-		fmt.Fprintf(w, `<tr>
+		officeSelect := `<select class="office-select" data-mac="` + device.MACAddress + `">`
+
+		for _, office := range officeOptions {
+			selected := ""
+			if device.Office == office {
+				selected = ` selected`
+			}
+
+			label := office
+			if office == "" {
+				label = "-"
+			}
+
+			officeSelect += `<option value="` + office + `"` + selected + `>` + label + `</option>`
+		}
+
+		officeSelect += `</select>`
+
+		if device.MACAddress == "" {
+			officeSelect = `<select class="office-select" disabled><option>-</option></select>`
+		}
+
+		commentInput := `<textarea class="comment-input" data-mac="` + device.MACAddress + `" title="` + template.HTMLEscapeString(device.Comment) + `" placeholder="Kommentar...">` + template.HTMLEscapeString(device.Comment) + `</textarea>`
+
+		if device.MACAddress == "" {
+			commentInput = `<textarea class="comment-input" placeholder="Kommentar..." disabled></textarea>`
+		}
+
+		fmt.Fprintf(w, `<tr data-office="%s">
 		  <td data-col="fav" class="fav-cell">%s</td>
 		  <td data-col="status" class="%s">%s</td>
-		  <td data-col="ip" class="ip-cell">%s<strong>%s</strong></td>
+		  <td data-col="ip"><div class="ip-cell">%s<strong>%s</strong></div></td>
 		  <td data-col="hostname">%s</td>
+      <td data-col="office">%s</td>
+      <td data-col="comment">%s</td>
 		  <td data-col="mac" class="mac-font">%s</td>
 		  <td data-col="os">%s</td>
 		  <td data-col="ams">%s</td>
@@ -386,10 +486,13 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 		  <td data-col="runtime">%s</td>
 		  <td data-col="lastonline">%s</td>
 		</tr>`,
+			device.Office,
 			favCell,
 			statusClass, statusText,
 			rdpButton, device.IP,
 			device.Hostname,
+			officeSelect,
+			commentInput,
 			device.MACAddress,
 			device.OSVersion,
 			device.AmsNetID,
@@ -400,13 +503,13 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 	}
 
 	// 5) HTML schließen
-	fmt.Fprint(w, `
+	fmt.Fprintf(w, `
                 </tbody>
             </table>
         </div>
 
-        <script src="/static/app.js"></script>
+        <script src="/static/app.js?v=%d"></script>
     </body>
     </html>
-`)
+`, time.Now().Unix())
 }

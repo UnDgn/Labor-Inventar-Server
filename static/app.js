@@ -130,6 +130,9 @@ function enableDragDrop() {
   enableFavorites();
   sortTableWithFavorites();
   applyFavoriteFilter();
+  enableOfficeAssignment();
+  enableCommentAssignment();
+
 });
 
   const COL_WIDTH_KEY = "inventory_col_width_v1";
@@ -231,6 +234,44 @@ function sortFavorites() {
   rows.forEach(row => tbody.appendChild(row));
 }
 
+
+
+document.addEventListener("input", (e) => {
+  const textarea = e.target.closest(".comment-input");
+  if (!textarea) return;
+
+  autoResizeTextarea(textarea);
+});
+
+function enableOfficeAssignment() {
+  document.addEventListener("change", async (e) => {
+    const select = e.target.closest(".office-select[data-mac]");
+    if (!select || select.disabled) return;
+
+    const mac = select.dataset.mac;
+    const office = select.value;
+
+    try {
+      const res = await fetch("/api/office", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          mac: mac,
+          office: office
+        })
+      });
+
+      if (!res.ok) {
+        alert("Bürozuordnung konnte nicht gespeichert werden.");
+      }
+    } catch (err) {
+      alert("Fehler beim Speichern der Bürozuordnung.");
+    }
+  });
+}
+
 function sortTableWithFavorites() {
   const tbody = document.querySelector("#deviceTable tbody");
   if (!tbody) return;
@@ -305,6 +346,37 @@ function applyFavoriteFilter() {
   });
 
   updateFavoriteFilterButton();
+}
+function enableCommentAssignment() {
+  let commentSaveTimeout;
+
+  document.addEventListener("input", (e) => {
+    const input = e.target.closest(".comment-input[data-mac]");
+    if (!input || input.disabled) return;
+
+    clearTimeout(commentSaveTimeout);
+
+    commentSaveTimeout = setTimeout(async () => {
+      try {
+        const res = await fetch("/api/comment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            mac: input.dataset.mac,
+            comment: input.value
+          })
+        });
+
+        if (!res.ok) {
+          console.error("Kommentar konnte nicht gespeichert werden.");
+        }
+      } catch (err) {
+        console.error("Fehler beim Speichern des Kommentars:", err);
+      }
+    }, 500);
+  });
 }
 
 function toggleFavoriteFilter() {
