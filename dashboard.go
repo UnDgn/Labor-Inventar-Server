@@ -208,7 +208,7 @@ td[data-col="office"] {
 
 th[data-col="comment"],
 td[data-col="comment"] {
-  width: 280px;
+  width: 260px;
   min-width: 200px;
   max-width: 280px;
 }
@@ -336,7 +336,10 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
             <div class="header-bar">
                 <div class="logo-section">
                     <img src="/static/logo.png" alt="Beckhoff" style="height: 40px;">
-                    <h1 style="margin: 0; font-size: 1.5em; font-weight: 300;">Testnetz</h1>
+                    <h1 style="margin: 0; font-size: 1.5em; font-weight: 300; display: flex; align-items: center; gap: 10px;">
+    Testnetz 
+    <span style="font-size: 0.4em; font-weight: bold; color: #ce1126; border: 1px solid #ce1126; padding: 2px 6px; border-radius: 4px; letter-spacing: 1px; vertical-align: middle;">BETA</span>
+</h1>
                 </div>
 
                 <div class="search-group">
