@@ -1,10 +1,10 @@
 {
-  "saved_at": "2026-03-09T14:08:34.3624659+01:00",
+  "saved_at": "2026-03-11T09:26:31.3937564+01:00",
   "inventory": {
     "172.17.76.1": {
       "IP": "172.17.76.1",
       "IsReachable": true,
-      "Office": "T4015",
+      "Office": "T2002",
       "Comment": "Test\nTest\nTest",
       "MACAddress": "00:09:0F:09:36:00",
       "Hostname": "",
@@ -13,9 +13,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.4093352+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:30.4093352+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.5999774+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:27.5999774+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.10": {
       "IP": "172.17.76.10",
@@ -27,11 +30,14 @@
       "OSVersion": "Windows 11 (26100) 24H2",
       "AmsNetID": "172.17.76.11.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64696: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8931402+01:00",
-      "LastScan": "2026-03-09T14:08:29.1183233+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1183233+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.36075+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.36075+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:16.2601464+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.100": {
       "IP": "172.17.76.100",
@@ -45,9 +51,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.862793+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.389567+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.101": {
       "IP": "172.17.76.101",
@@ -61,9 +70,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8657012+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3928672+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.102": {
       "IP": "172.17.76.102",
@@ -77,9 +89,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8637898+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3945223+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.103": {
       "IP": "172.17.76.103",
@@ -93,9 +108,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.39087+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.104": {
       "IP": "172.17.76.104",
@@ -109,9 +127,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3973634+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.105": {
       "IP": "172.17.76.105",
@@ -125,9 +146,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.390366+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.106": {
       "IP": "172.17.76.106",
@@ -141,9 +165,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.399861+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.107": {
       "IP": "172.17.76.107",
@@ -157,9 +184,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3978676+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.108": {
       "IP": "172.17.76.108",
@@ -173,9 +203,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3715927+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3945223+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.109": {
       "IP": "172.17.76.109",
@@ -189,25 +222,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3657298+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.389567+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.11": {
       "IP": "172.17.76.11",
-      "IsReachable": false,
+      "IsReachable": true,
       "Office": "",
       "Comment": "",
-      "MACAddress": "",
-      "Hostname": "",
-      "OSVersion": "",
-      "AmsNetID": "",
-      "TwinCATVersion": "",
-      "RuntimeStatus": "",
+      "MACAddress": "00:01:05:84:8E:72",
+      "Hostname": "BTN-000u8bbr.beckhoff.com",
+      "OSVersion": "Windows 10 (19044) 21H2",
+      "AmsNetID": "10.1.177.123.1.1",
+      "TwinCATVersion": "3.1.4026",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60755: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3762357+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.3536882+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.3536882+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.110": {
       "IP": "172.17.76.110",
@@ -221,9 +260,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3680856+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.389567+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.111": {
       "IP": "172.17.76.111",
@@ -237,9 +279,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3642639+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.404056+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.112": {
       "IP": "172.17.76.112",
@@ -253,9 +298,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3632712+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3988675+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.113": {
       "IP": "172.17.76.113",
@@ -269,9 +317,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3680856+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.4003691+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.114": {
       "IP": "172.17.76.114",
@@ -285,9 +336,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3687515+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3978676+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.115": {
       "IP": "172.17.76.115",
@@ -301,9 +355,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3647686+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.4045955+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.116": {
       "IP": "172.17.76.116",
@@ -317,9 +374,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3614124+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.3988675+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.117": {
       "IP": "172.17.76.117",
@@ -333,9 +393,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3697721+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.399861+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.118": {
       "IP": "172.17.76.118",
@@ -349,9 +412,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3737604+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8929479+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.119": {
       "IP": "172.17.76.119",
@@ -365,9 +431,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3673501+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8909039+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.12": {
       "IP": "172.17.76.12",
@@ -379,11 +448,14 @@
       "OSVersion": "Windows 10 (14393) 1607",
       "AmsNetID": "5.34.197.244.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64691: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8931402+01:00",
-      "LastScan": "2026-03-09T14:08:29.1804537+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1804537+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.4666784+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.4666784+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:16.3028486+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.120": {
       "IP": "172.17.76.120",
@@ -397,9 +469,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3720952+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8914091+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.121": {
       "IP": "172.17.76.121",
@@ -413,9 +488,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3604154+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8924457+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.122": {
       "IP": "172.17.76.122",
@@ -429,9 +507,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.3742794+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8909039+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.123": {
       "IP": "172.17.76.123",
@@ -445,9 +526,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8597483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.124": {
       "IP": "172.17.76.124",
@@ -461,9 +545,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8609778+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8929479+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.125": {
       "IP": "172.17.76.125",
@@ -475,11 +562,14 @@
       "OSVersion": "Win CE (7.0)",
       "AmsNetID": "5.18.141.240.1.1",
       "TwinCATVersion": "2.11.2312",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59640: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8946345+01:00",
-      "LastScan": "2026-03-09T14:08:31.6583269+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6583269+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:28.6348289+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.6348289+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.5481593+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.126": {
       "IP": "172.17.76.126",
@@ -493,9 +583,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8597483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8942627+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.127": {
       "IP": "172.17.76.127",
@@ -509,9 +602,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8597483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8914091+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.128": {
       "IP": "172.17.76.128",
@@ -525,9 +621,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8597483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8914091+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.129": {
       "IP": "172.17.76.129",
@@ -541,9 +640,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8617523+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8909039+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.13": {
       "IP": "172.17.76.13",
@@ -555,11 +657,14 @@
       "OSVersion": "Windows 11 (26100) 24H2",
       "AmsNetID": "172.17.76.13.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64695: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.13:48898: dial tcp4 172.17.76.13:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.892529+01:00",
-      "LastScan": "2026-03-09T14:08:29.1719164+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1719164+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.3469902+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.3469902+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.130": {
       "IP": "172.17.76.130",
@@ -573,9 +678,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8597483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.131": {
       "IP": "172.17.76.131",
@@ -589,9 +697,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8662941+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8942627+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.132": {
       "IP": "172.17.76.132",
@@ -603,11 +714,14 @@
       "OSVersion": "TwinCAT/BSD (14.3)",
       "AmsNetID": "5.163.138.93.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59639: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.132:48898: dial tcp4 172.17.76.132:48898: connectex: No connection could be made because the target machine actively refused it.)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8946345+01:00",
-      "LastScan": "2026-03-09T14:08:32.9083929+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.9083929+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.9285912+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.9285912+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.133": {
       "IP": "172.17.76.133",
@@ -621,9 +735,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8617523+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.134": {
       "IP": "172.17.76.134",
@@ -635,11 +752,14 @@
       "OSVersion": "Windows 10 (14393) 1607",
       "AmsNetID": "172.17.76.134.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59641: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8951497+01:00",
-      "LastScan": "2026-03-09T14:08:31.5644585+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.5644585+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:28.6534996+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.6534996+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.2985037+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.135": {
       "IP": "172.17.76.135",
@@ -653,9 +773,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8662941+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8942627+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.136": {
       "IP": "172.17.76.136",
@@ -669,9 +792,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.6583269+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6583269+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.6540269+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.6540269+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.137": {
       "IP": "172.17.76.137",
@@ -685,9 +811,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.6202867+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6202867+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.6808209+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.6808209+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.138": {
       "IP": "172.17.76.138",
@@ -699,11 +828,14 @@
       "OSVersion": "Linux (6.15)",
       "AmsNetID": "5.163.203.149.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59642: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8951497+01:00",
-      "LastScan": "2026-03-09T14:08:31.6224258+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6224258+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:28.7445227+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.7445227+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.2319688+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.139": {
       "IP": "172.17.76.139",
@@ -715,11 +847,14 @@
       "OSVersion": "Windows 10 (17763) 1809",
       "AmsNetID": "172.17.57.239.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59643: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8951497+01:00",
-      "LastScan": "2026-03-09T14:08:31.6583269+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6583269+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:28.7574862+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.7574862+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.5507542+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.14": {
       "IP": "172.17.76.14",
@@ -733,9 +868,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3622495+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4004205+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.140": {
       "IP": "172.17.76.140",
@@ -747,11 +885,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.171.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59646: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8945079+01:00",
-      "LastScan": "2026-03-09T14:08:31.6594204+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.6594204+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:28.7668204+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:28.7668204+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.616085+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.141": {
       "IP": "172.17.76.141",
@@ -765,9 +906,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8609778+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.142": {
       "IP": "172.17.76.142",
@@ -781,25 +925,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8627514+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8948008+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.143": {
       "IP": "172.17.76.143",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "00:01:05:31:4F:F3",
-      "Hostname": "CX-314FF2.beckhoff.com",
-      "OSVersion": "Windows 10 (14393) 1607",
-      "AmsNetID": "172.17.76.175.1.1",
-      "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59645: i/o timeout)",
+      "MACAddress": "",
+      "Hostname": "",
+      "OSVersion": "",
+      "AmsNetID": "",
+      "TwinCATVersion": "",
+      "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8945079+01:00",
-      "LastScan": "2026-03-09T14:08:31.7050018+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.7050018+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.144": {
       "IP": "172.17.76.144",
@@ -813,9 +963,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8668122+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.8990289+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.145": {
       "IP": "172.17.76.145",
@@ -827,11 +980,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "169.254.251.139.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59647: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8945079+01:00",
-      "LastScan": "2026-03-09T14:08:31.7428065+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.7428065+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.0799735+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0799735+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.6801866+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.146": {
       "IP": "172.17.76.146",
@@ -845,9 +1001,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8632882+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3899764+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.147": {
       "IP": "172.17.76.147",
@@ -861,9 +1020,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8662941+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3899764+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.148": {
       "IP": "172.17.76.148",
@@ -877,9 +1039,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8662941+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3903136+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.149": {
       "IP": "172.17.76.149",
@@ -893,9 +1058,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.7898139+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.7898139+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.0904797+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0904797+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.15": {
       "IP": "172.17.76.15",
@@ -907,11 +1075,14 @@
       "OSVersion": "TwinCAT/BSD (14.3)",
       "AmsNetID": "5.132.131.53.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64694: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.15:48898: dial tcp4 172.17.76.15:48898: connectex: No connection could be made because the target machine actively refused it.)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8937882+01:00",
-      "LastScan": "2026-03-09T14:08:29.1625724+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1625724+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.4180265+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.4180265+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.150": {
       "IP": "172.17.76.150",
@@ -925,9 +1096,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8058884+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.8058884+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.1021074+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.1021074+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.151": {
       "IP": "172.17.76.151",
@@ -936,30 +1110,36 @@
       "Comment": "",
       "MACAddress": "",
       "Hostname": "",
-      "OSVersion": "",
-      "AmsNetID": "",
-      "TwinCATVersion": "",
-      "RuntimeStatus": "",
+      "OSVersion": "Windows 10 (19044) 21H2",
+      "AmsNetID": "192.168.56.1.1.1",
+      "TwinCATVersion": "3.1.4024",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8668122+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.3899764+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.7402869+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.152": {
       "IP": "172.17.76.152",
-      "IsReachable": false,
+      "IsReachable": true,
       "Office": "",
       "Comment": "",
-      "MACAddress": "",
-      "Hostname": "",
-      "OSVersion": "",
-      "AmsNetID": "",
-      "TwinCATVersion": "",
-      "RuntimeStatus": "",
+      "MACAddress": "00:01:05:8F:88:C1",
+      "Hostname": "BTN-000tj6l9.beckhoff.com",
+      "OSVersion": "Windows 10 (19044) 21H2",
+      "AmsNetID": "172.17.76.147.1.1",
+      "TwinCATVersion": "3.1.4026",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:31.8674019+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.0844993+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0844993+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:20.7997259+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.153": {
       "IP": "172.17.76.153",
@@ -971,11 +1151,14 @@
       "OSVersion": "TwinCAT/BSD (14.3)",
       "AmsNetID": "5.163.139.177.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59648: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.153:48898: dial tcp4 172.17.76.153:48898: connectex: No connection could be made because the target machine actively refused it.)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8950097+01:00",
-      "LastScan": "2026-03-09T14:08:31.961642+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:31.961642+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.0866625+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0866625+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.154": {
       "IP": "172.17.76.154",
@@ -989,9 +1172,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3593543+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3934824+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.155": {
       "IP": "172.17.76.155",
@@ -1003,11 +1189,14 @@
       "OSVersion": "Linux (6.15)",
       "AmsNetID": "5.163.232.225.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59649: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.155:48898: dial tcp4 172.17.76.155:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8950097+01:00",
-      "LastScan": "2026-03-09T14:08:32.0452191+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0452191+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.0826416+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0826416+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.156": {
       "IP": "172.17.76.156",
@@ -1021,9 +1210,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3620726+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3908183+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.157": {
       "IP": "172.17.76.157",
@@ -1035,11 +1227,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.157.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59650: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8955302+01:00",
-      "LastScan": "2026-03-09T14:08:32.0566561+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0566561+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.0866625+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.0866625+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.6395529+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.158": {
       "IP": "172.17.76.158",
@@ -1053,9 +1248,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.0452191+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0452191+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.1205494+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.1205494+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.159": {
       "IP": "172.17.76.159",
@@ -1069,25 +1267,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3604075+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3917414+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.16": {
       "IP": "172.17.76.16",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "A0:AD:9F:1C:B4:BC",
-      "Hostname": "BADEWPC900011.beckhoff.com",
+      "MACAddress": "",
+      "Hostname": "",
       "OSVersion": "",
       "AmsNetID": "",
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.1211872+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1211872+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4030875+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.160": {
       "IP": "172.17.76.160",
@@ -1101,9 +1305,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3593543+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3899764+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.161": {
       "IP": "172.17.76.161",
@@ -1117,9 +1324,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3633976+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3912389+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.162": {
       "IP": "172.17.76.162",
@@ -1133,9 +1343,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3633976+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3903136+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.163": {
       "IP": "172.17.76.163",
@@ -1149,9 +1362,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3593543+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3912389+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.164": {
       "IP": "172.17.76.164",
@@ -1163,11 +1379,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "5.143.142.192.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59651: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8955302+01:00",
-      "LastScan": "2026-03-09T14:08:32.0571685+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0571685+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.2323665+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.2323665+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.6990234+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.165": {
       "IP": "172.17.76.165",
@@ -1181,9 +1400,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3620726+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3917414+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.166": {
       "IP": "172.17.76.166",
@@ -1197,9 +1419,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3633976+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3924825+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.167": {
       "IP": "172.17.76.167",
@@ -1211,11 +1436,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "5.124.195.176.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59652: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:25.8955302+01:00",
-      "LastScan": "2026-03-09T14:08:32.038128+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.038128+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.2265824+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.2265824+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.7627849+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.168": {
       "IP": "172.17.76.168",
@@ -1229,9 +1457,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3633976+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3934824+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.169": {
       "IP": "172.17.76.169",
@@ -1245,9 +1476,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.039291+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.039291+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.2313102+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.2313102+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.17": {
       "IP": "172.17.76.17",
@@ -1259,11 +1493,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "5.118.118.32.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64697: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60748: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8937882+01:00",
-      "LastScan": "2026-03-09T14:08:29.1599843+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1599843+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.348892+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.348892+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.170": {
       "IP": "172.17.76.170",
@@ -1273,13 +1510,16 @@
       "MACAddress": "00:01:05:97:43:1F",
       "Hostname": "BTN-000tmmfm.beckhoff.com",
       "OSVersion": "Windows 10 (19044) 21H2",
-      "AmsNetID": "5.151.67.30.1.1",
-      "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:54237: i/o timeout)",
+      "AmsNetID": "172.17.76.170.1.1",
+      "TwinCATVersion": "3.1.4026",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:28.8950388+01:00",
-      "LastScan": "2026-03-09T14:08:32.0566561+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0566561+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.2476624+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.2476624+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.8112515+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.171": {
       "IP": "172.17.76.171",
@@ -1291,11 +1531,14 @@
       "OSVersion": "Windows 10 (14393) 1607",
       "AmsNetID": "172.17.56.170.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:54236: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:28.8955409+01:00",
-      "LastScan": "2026-03-09T14:08:32.0482712+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.0482712+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.2613364+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.2613364+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:21.9539737+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.172": {
       "IP": "172.17.76.172",
@@ -1307,11 +1550,14 @@
       "OSVersion": "Windows 11 (26100) 24H2",
       "AmsNetID": "172.17.76.172.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:54238: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.172:48898: dial tcp4 172.17.76.172:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:28.8955409+01:00",
-      "LastScan": "2026-03-09T14:08:32.1042308+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.1042308+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:29.3426598+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.3426598+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.173": {
       "IP": "172.17.76.173",
@@ -1325,9 +1571,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.1704434+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:32.1704434+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3447396+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:29.3447396+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.174": {
       "IP": "172.17.76.174",
@@ -1341,9 +1590,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3672407+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3934824+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.175": {
       "IP": "172.17.76.175",
@@ -1357,9 +1609,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3633976+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3941003+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.176": {
       "IP": "172.17.76.176",
@@ -1373,9 +1628,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3639015+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3941003+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.177": {
       "IP": "172.17.76.177",
@@ -1389,9 +1647,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3649009+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3973609+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.178": {
       "IP": "172.17.76.178",
@@ -1405,9 +1666,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3672407+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.3934824+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.179": {
       "IP": "172.17.76.179",
@@ -1421,9 +1685,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3672407+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8906789+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.18": {
       "IP": "172.17.76.18",
@@ -1435,11 +1702,14 @@
       "OSVersion": "Windows 10 (14393) 1607",
       "AmsNetID": "172.17.76.18.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64692: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8931402+01:00",
-      "LastScan": "2026-03-09T14:08:29.173475+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.173475+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.4035909+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.4035909+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:16.2657846+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.180": {
       "IP": "172.17.76.180",
@@ -1453,9 +1723,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3687649+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8954017+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.181": {
       "IP": "172.17.76.181",
@@ -1469,9 +1742,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3677595+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8906789+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.182": {
       "IP": "172.17.76.182",
@@ -1485,9 +1761,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.3677595+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8906789+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.183": {
       "IP": "172.17.76.183",
@@ -1501,9 +1780,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8619032+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8968581+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.184": {
       "IP": "172.17.76.184",
@@ -1517,9 +1799,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8619032+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8958274+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.185": {
       "IP": "172.17.76.185",
@@ -1533,9 +1818,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8650597+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8939181+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.186": {
       "IP": "172.17.76.186",
@@ -1549,9 +1837,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.860873+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8932306+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.187": {
       "IP": "172.17.76.187",
@@ -1565,9 +1856,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8655628+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8914404+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.188": {
       "IP": "172.17.76.188",
@@ -1581,9 +1875,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8675211+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8958274+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.189": {
       "IP": "172.17.76.189",
@@ -1597,9 +1894,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8598837+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8914404+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.19": {
       "IP": "172.17.76.19",
@@ -1611,11 +1911,14 @@
       "OSVersion": "TwinCAT/BSD (14.3)",
       "AmsNetID": "5.18.64.245.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64698: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.19:48898: dial tcp4 172.17.76.19:48898: connectex: No connection could be made because the target machine actively refused it.)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.892529+01:00",
-      "LastScan": "2026-03-09T14:08:29.1877115+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1877115+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.3469902+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.3469902+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.190": {
       "IP": "172.17.76.190",
@@ -1629,9 +1932,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8619032+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8958274+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.191": {
       "IP": "172.17.76.191",
@@ -1645,9 +1951,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8675211+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8954017+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.192": {
       "IP": "172.17.76.192",
@@ -1661,9 +1970,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8650597+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.89633+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.193": {
       "IP": "172.17.76.193",
@@ -1677,9 +1989,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8659762+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.89633+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.194": {
       "IP": "172.17.76.194",
@@ -1693,9 +2008,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8682348+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8979628+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.195": {
       "IP": "172.17.76.195",
@@ -1709,9 +2027,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8682348+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8954017+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.196": {
       "IP": "172.17.76.196",
@@ -1725,9 +2046,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8675211+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8968581+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.197": {
       "IP": "172.17.76.197",
@@ -1741,9 +2065,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8650597+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:29.8958274+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.198": {
       "IP": "172.17.76.198",
@@ -1757,9 +2084,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8675211+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3905038+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.199": {
       "IP": "172.17.76.199",
@@ -1773,9 +2103,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8682348+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3905038+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.2": {
       "IP": "172.17.76.2",
@@ -1789,9 +2122,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3697304+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.399001+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.20": {
       "IP": "172.17.76.20",
@@ -1803,11 +2139,14 @@
       "OSVersion": "TC/RTOS (2.0)",
       "AmsNetID": "5.168.79.245.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64693: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:13.8937882+01:00",
-      "LastScan": "2026-03-09T14:08:29.1877115+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.1877115+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.3587046+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.3587046+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:16.3480775+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.200": {
       "IP": "172.17.76.200",
@@ -1821,9 +2160,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8675211+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3966109+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.201": {
       "IP": "172.17.76.201",
@@ -1837,9 +2179,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:32.8688253+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3945597+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.202": {
       "IP": "172.17.76.202",
@@ -1853,9 +2198,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3630123+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3905038+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.203": {
       "IP": "172.17.76.203",
@@ -1869,9 +2217,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3630123+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.395292+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.204": {
       "IP": "172.17.76.204",
@@ -1885,9 +2236,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3671415+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3945597+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.205": {
       "IP": "172.17.76.205",
@@ -1901,9 +2255,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3671415+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.395796+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.206": {
       "IP": "172.17.76.206",
@@ -1917,9 +2274,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3645567+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3945597+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.207": {
       "IP": "172.17.76.207",
@@ -1933,9 +2293,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3691693+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3978281+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.208": {
       "IP": "172.17.76.208",
@@ -1949,9 +2312,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3666372+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.393126+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.209": {
       "IP": "172.17.76.209",
@@ -1965,9 +2331,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3681725+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3966109+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.21": {
       "IP": "172.17.76.21",
@@ -1979,11 +2348,14 @@
       "OSVersion": "Linux (6.18)",
       "AmsNetID": "5.163.139.167.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64699: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.21:48898: dial tcp4 172.17.76.21:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8932382+01:00",
-      "LastScan": "2026-03-09T14:08:29.2439006+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.2439006+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.5541468+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.5541468+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.210": {
       "IP": "172.17.76.210",
@@ -1997,9 +2369,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3671415+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3988525+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.211": {
       "IP": "172.17.76.211",
@@ -2013,9 +2388,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3681725+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3945597+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.212": {
       "IP": "172.17.76.212",
@@ -2029,9 +2407,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.370756+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.393126+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.213": {
       "IP": "172.17.76.213",
@@ -2045,9 +2426,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3691693+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3988525+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.214": {
       "IP": "172.17.76.214",
@@ -2061,9 +2445,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3671415+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3966109+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.215": {
       "IP": "172.17.76.215",
@@ -2077,9 +2464,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.370756+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3945597+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.216": {
       "IP": "172.17.76.216",
@@ -2093,9 +2483,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3691693+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3971723+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.217": {
       "IP": "172.17.76.217",
@@ -2109,9 +2502,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3681725+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.3988525+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.218": {
       "IP": "172.17.76.218",
@@ -2125,9 +2521,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3681725+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8907179+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.219": {
       "IP": "172.17.76.219",
@@ -2141,9 +2540,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3691693+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8897215+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.22": {
       "IP": "172.17.76.22",
@@ -2157,9 +2559,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.2600103+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.2600103+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.5640523+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.5640523+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.220": {
       "IP": "172.17.76.220",
@@ -2173,9 +2578,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.3681725+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8995776+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.221": {
       "IP": "172.17.76.221",
@@ -2189,9 +2597,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.370756+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9010269+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.222": {
       "IP": "172.17.76.222",
@@ -2205,9 +2616,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8610491+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9031945+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.223": {
       "IP": "172.17.76.223",
@@ -2221,9 +2635,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8691632+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8907179+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.224": {
       "IP": "172.17.76.224",
@@ -2237,9 +2654,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8623567+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9010269+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.225": {
       "IP": "172.17.76.225",
@@ -2253,9 +2673,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8653979+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8927118+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.226": {
       "IP": "172.17.76.226",
@@ -2269,9 +2692,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8618534+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9041857+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.227": {
       "IP": "172.17.76.227",
@@ -2285,9 +2711,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8605452+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8966065+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.228": {
       "IP": "172.17.76.228",
@@ -2301,9 +2730,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8684392+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8966065+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.229": {
       "IP": "172.17.76.229",
@@ -2317,9 +2749,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8598393+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9031945+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.23": {
       "IP": "172.17.76.23",
@@ -2331,11 +2766,14 @@
       "OSVersion": "Windows 11 (26100) 24H2",
       "AmsNetID": "192.168.178.53.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64700: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60758: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8932382+01:00",
-      "LastScan": "2026-03-09T14:08:29.3190916+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3190916+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.5453816+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.5453816+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.230": {
       "IP": "172.17.76.230",
@@ -2349,9 +2787,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8658634+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8946102+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.231": {
       "IP": "172.17.76.231",
@@ -2365,9 +2806,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8658634+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9010269+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.232": {
       "IP": "172.17.76.232",
@@ -2381,9 +2825,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8669262+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8966065+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.233": {
       "IP": "172.17.76.233",
@@ -2397,9 +2844,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8605452+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9000806+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.234": {
       "IP": "172.17.76.234",
@@ -2413,9 +2863,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8658634+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8927118+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.235": {
       "IP": "172.17.76.235",
@@ -2429,9 +2882,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8669262+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9041857+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.236": {
       "IP": "172.17.76.236",
@@ -2445,9 +2901,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8633567+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.8956101+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.237": {
       "IP": "172.17.76.237",
@@ -2461,9 +2920,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8658634+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:30.9038613+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.238": {
       "IP": "172.17.76.238",
@@ -2477,9 +2939,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8658634+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3900708+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.239": {
       "IP": "172.17.76.239",
@@ -2493,25 +2958,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8647025+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3900708+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.24": {
       "IP": "172.17.76.24",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "68:05:CA:B0:B5:55",
+      "MACAddress": "",
       "Hostname": "SebastianSch01.beckhoff.com",
       "OSVersion": "Windows 10 (19045) 22H2",
       "AmsNetID": "192.168.32.1.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64701: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60759: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8932382+01:00",
-      "LastScan": "2026-03-09T14:08:29.3055022+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3055022+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.8891511+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.240": {
       "IP": "172.17.76.240",
@@ -2525,9 +2996,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8623567+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3890746+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.241": {
       "IP": "172.17.76.241",
@@ -2541,9 +3015,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:33.8605452+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3911924+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.242": {
       "IP": "172.17.76.242",
@@ -2557,9 +3034,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3594839+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.392527+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.243": {
       "IP": "172.17.76.243",
@@ -2573,9 +3053,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3602118+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3890746+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.244": {
       "IP": "172.17.76.244",
@@ -2589,9 +3072,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3607156+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3890746+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.245": {
       "IP": "172.17.76.245",
@@ -2605,9 +3091,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3594839+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.393299+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.246": {
       "IP": "172.17.76.246",
@@ -2621,9 +3110,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3624659+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3911924+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.247": {
       "IP": "172.17.76.247",
@@ -2637,9 +3129,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3614288+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3900708+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.248": {
       "IP": "172.17.76.248",
@@ -2653,9 +3148,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3619323+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3906869+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.249": {
       "IP": "172.17.76.249",
@@ -2669,9 +3167,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3619323+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3911924+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.25": {
       "IP": "172.17.76.25",
@@ -2685,9 +3186,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3762357+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8891511+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.250": {
       "IP": "172.17.76.250",
@@ -2701,9 +3205,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3619323+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.392527+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.251": {
       "IP": "172.17.76.251",
@@ -2717,9 +3224,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3614288+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3920232+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.252": {
       "IP": "172.17.76.252",
@@ -2733,9 +3243,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3614288+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.3920232+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.253": {
       "IP": "172.17.76.253",
@@ -2749,9 +3262,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3614288+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.392527+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.254": {
       "IP": "172.17.76.254",
@@ -2765,9 +3281,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:34.3614288+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:31.392527+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.26": {
       "IP": "172.17.76.26",
@@ -2779,11 +3298,14 @@
       "OSVersion": "Linux (6.17)",
       "AmsNetID": "172.17.76.26.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64702: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.26:48898: dial tcp4 172.17.76.26:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8932382+01:00",
-      "LastScan": "2026-03-09T14:08:29.3071064+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3071064+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.5659135+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.5659135+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.27": {
       "IP": "172.17.76.27",
@@ -2795,11 +3317,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.27.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64703: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8932382+01:00",
-      "LastScan": "2026-03-09T14:08:29.3190916+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3190916+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6238546+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6238546+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:18.278876+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.28": {
       "IP": "172.17.76.28",
@@ -2811,27 +3336,33 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.28.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64704: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8942893+01:00",
-      "LastScan": "2026-03-09T14:08:29.3238873+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3238873+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6296917+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6296917+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:18.3287221+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.29": {
       "IP": "172.17.76.29",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "00:01:05:55:AC:C4",
-      "Hostname": "CX-55ACC4.beckhoff.com",
-      "OSVersion": "Win CE (6.0)",
-      "AmsNetID": "5.85.172.196.1.1",
-      "TwinCATVersion": "2.11.2312",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64705: i/o timeout)",
+      "MACAddress": "",
+      "Hostname": "",
+      "OSVersion": "",
+      "AmsNetID": "",
+      "TwinCATVersion": "",
+      "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8942893+01:00",
-      "LastScan": "2026-03-09T14:08:29.3238873+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.3238873+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8891511+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.3": {
       "IP": "172.17.76.3",
@@ -2845,9 +3376,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3652594+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4035909+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.30": {
       "IP": "172.17.76.30",
@@ -2861,9 +3395,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.413649+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.413649+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.6540087+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6540087+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.31": {
       "IP": "172.17.76.31",
@@ -2875,11 +3412,14 @@
       "OSVersion": "Linux (6.17)",
       "AmsNetID": "5.169.42.48.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64706: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:16.8942893+01:00",
-      "LastScan": "2026-03-09T14:08:29.4875826+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.4875826+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6252547+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6252547+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.1255866+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.32": {
       "IP": "172.17.76.32",
@@ -2893,9 +3433,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3861613+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8896538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.33": {
       "IP": "172.17.76.33",
@@ -2907,11 +3450,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.33.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64831: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60773: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8937389+01:00",
-      "LastScan": "2026-03-09T14:08:29.4885828+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.4885828+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.631689+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.631689+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.34": {
       "IP": "172.17.76.34",
@@ -2925,9 +3471,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3682493+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8908415+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.35": {
       "IP": "172.17.76.35",
@@ -2939,27 +3488,33 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "169.254.66.183.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64830: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60775: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8942409+01:00",
-      "LastScan": "2026-03-09T14:08:29.4912397+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.4912397+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6480617+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6480617+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.36": {
       "IP": "172.17.76.36",
-      "IsReachable": false,
+      "IsReachable": true,
       "Office": "",
       "Comment": "",
-      "MACAddress": "",
-      "Hostname": "",
-      "OSVersion": "",
-      "AmsNetID": "",
-      "TwinCATVersion": "",
-      "RuntimeStatus": "",
+      "MACAddress": "00:01:05:84:85:EA",
+      "Hostname": "BTN-000tg0re.beckhoff.com",
+      "OSVersion": "Windows 11 (26100) 24H2",
+      "AmsNetID": "172.17.76.37.1.1",
+      "TwinCATVersion": "3.1.4026",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8602664+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6732763+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6732763+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.3557002+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.37": {
       "IP": "172.17.76.37",
@@ -2971,11 +3526,14 @@
       "OSVersion": "Windows 11 (26100) 24H2",
       "AmsNetID": "172.17.76.37.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64832: i/o timeout)",
+      "RuntimeStatus": "no Info (ReadState(port 10000): dial tcp 172.17.76.37:48898: dial tcp4 172.17.76.37:48898: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8937389+01:00",
-      "LastScan": "2026-03-09T14:08:29.5281105+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5281105+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6532584+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6532584+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.38": {
       "IP": "172.17.76.38",
@@ -2987,11 +3545,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "169.254.108.6.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64833: i/o timeout)",
+      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:60779: i/o timeout)",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8937389+01:00",
-      "LastScan": "2026-03-09T14:08:29.5577857+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5577857+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.6648839+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.6648839+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.39": {
       "IP": "172.17.76.39",
@@ -3003,11 +3564,14 @@
       "OSVersion": "TwinCAT/BSD (12.1)",
       "AmsNetID": "5.28.166.128.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64834: i/o timeout)",
+      "RuntimeStatus": "CONFIG",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8937389+01:00",
-      "LastScan": "2026-03-09T14:08:29.5373563+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5373563+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.69388+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.69388+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.3642952+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.4": {
       "IP": "172.17.76.4",
@@ -3021,25 +3585,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3632667+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4030875+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.40": {
       "IP": "172.17.76.40",
-      "IsReachable": false,
+      "IsReachable": true,
       "Office": "",
       "Comment": "",
-      "MACAddress": "",
-      "Hostname": "",
-      "OSVersion": "",
-      "AmsNetID": "",
-      "TwinCATVersion": "",
-      "RuntimeStatus": "",
+      "MACAddress": "00:01:05:8E:FE:AB",
+      "Hostname": "BTN-000ti8df.beckhoff.com",
+      "OSVersion": "Windows 11 (26100) 24H2",
+      "AmsNetID": "172.17.76.40.1.1",
+      "TwinCATVersion": "3.1.4026",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8602664+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.7161091+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.7161091+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.4008053+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.41": {
       "IP": "172.17.76.41",
@@ -3053,9 +3623,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8612918+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8912831+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.42": {
       "IP": "172.17.76.42",
@@ -3067,11 +3640,14 @@
       "OSVersion": "Windows 10 (17763) 1809",
       "AmsNetID": "5.30.228.96.1.1",
       "TwinCATVersion": "3.1.4024",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64835: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8947494+01:00",
-      "LastScan": "2026-03-09T14:08:29.5373563+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5373563+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.7263879+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.7263879+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.4321361+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.43": {
       "IP": "172.17.76.43",
@@ -3085,9 +3661,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8612918+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.892538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.44": {
       "IP": "172.17.76.44",
@@ -3099,11 +3678,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "10.1.176.236.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64836: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8947494+01:00",
-      "LastScan": "2026-03-09T14:08:29.5698568+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5698568+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.7701392+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.7701392+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.4925304+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.45": {
       "IP": "172.17.76.45",
@@ -3117,25 +3699,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8632625+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.892538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.46": {
       "IP": "172.17.76.46",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "10:98:19:1B:BB:83",
-      "Hostname": "FabianB-NB01.beckhoff.com",
-      "OSVersion": "Windows 11 (26200) 25H2",
-      "AmsNetID": "192.168.179.8.1.1",
-      "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:64837: i/o timeout)",
+      "MACAddress": "",
+      "Hostname": "",
+      "OSVersion": "",
+      "AmsNetID": "",
+      "TwinCATVersion": "",
+      "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:19.8947494+01:00",
-      "LastScan": "2026-03-09T14:08:29.5709333+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5709333+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8917861+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.47": {
       "IP": "172.17.76.47",
@@ -3149,9 +3737,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8618822+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8917861+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.48": {
       "IP": "172.17.76.48",
@@ -3163,11 +3754,14 @@
       "OSVersion": "Windows 10 (19044) 21H2",
       "AmsNetID": "172.17.76.48.1.1",
       "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59637: i/o timeout)",
+      "RuntimeStatus": "RUN",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8941159+01:00",
-      "LastScan": "2026-03-09T14:08:29.5594041+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.5594041+01:00"
+      "LastUpdate": "2026-03-11T09:26:16.2123112+01:00",
+      "LastScan": "2026-03-11T09:26:26.7871915+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.7871915+01:00",
+      "RouteKnownGood": true,
+      "LastRouteOK": "2026-03-11T09:26:19.5448536+01:00",
+      "RuntimePort": 10000
     },
     "172.17.76.49": {
       "IP": "172.17.76.49",
@@ -3181,9 +3775,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8618822+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8935382+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.5": {
       "IP": "172.17.76.5",
@@ -3197,25 +3794,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3642632+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4004205+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.50": {
       "IP": "172.17.76.50",
-      "IsReachable": false,
+      "IsReachable": true,
       "Office": "",
       "Comment": "",
-      "MACAddress": "",
-      "Hostname": "",
+      "MACAddress": "28:00:AF:CB:93:C4",
+      "Hostname": "NiklasEu-NB02.beckhoff.com",
       "OSVersion": "",
       "AmsNetID": "",
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8602664+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8081426+01:00",
+      "LastSeenOnline": "2026-03-11T09:26:26.8081426+01:00",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.51": {
       "IP": "172.17.76.51",
@@ -3229,25 +3832,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8632625+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.892538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.52": {
       "IP": "172.17.76.52",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "00:01:05:84:85:E9",
-      "Hostname": "BTN-000tg0re.beckhoff.com",
-      "OSVersion": "Windows 11 (26100) 24H2",
-      "AmsNetID": "172.17.76.37.1.1",
-      "TwinCATVersion": "3.1.4026",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59638: i/o timeout)",
+      "MACAddress": "",
+      "Hostname": "",
+      "OSVersion": "",
+      "AmsNetID": "",
+      "TwinCATVersion": "",
+      "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8941159+01:00",
-      "LastScan": "2026-03-09T14:08:29.629704+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.629704+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.892538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.53": {
       "IP": "172.17.76.53",
@@ -3261,25 +3870,31 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8697925+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8935382+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.54": {
       "IP": "172.17.76.54",
-      "IsReachable": true,
+      "IsReachable": false,
       "Office": "",
       "Comment": "",
-      "MACAddress": "00:01:05:1D:93:48",
-      "Hostname": "CP-1D9348.beckhoff.com",
-      "OSVersion": "Win CE (7.0)",
-      "AmsNetID": "5.29.147.72.1.1",
-      "TwinCATVersion": "2.11.2314",
-      "RuntimeStatus": "no Info (route: read udp4 172.17.76.23:59636: i/o timeout)",
+      "MACAddress": "",
+      "Hostname": "",
+      "OSVersion": "",
+      "AmsNetID": "",
+      "TwinCATVersion": "",
+      "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T14:08:22.8941159+01:00",
-      "LastScan": "2026-03-09T14:08:29.6385285+01:00",
-      "LastSeenOnline": "2026-03-09T14:08:29.6385285+01:00"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8970255+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.55": {
       "IP": "172.17.76.55",
@@ -3293,9 +3908,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8632625+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.892538+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.56": {
       "IP": "172.17.76.56",
@@ -3309,9 +3927,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8647899+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8970255+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.57": {
       "IP": "172.17.76.57",
@@ -3325,9 +3946,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8703097+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8935382+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.58": {
       "IP": "172.17.76.58",
@@ -3341,9 +3965,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8703097+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.8935382+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.59": {
       "IP": "172.17.76.59",
@@ -3357,9 +3984,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8697925+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3895478+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.6": {
       "IP": "172.17.76.6",
@@ -3373,9 +4003,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3622495+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4004205+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.60": {
       "IP": "172.17.76.60",
@@ -3389,9 +4022,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8642846+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3895478+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.61": {
       "IP": "172.17.76.61",
@@ -3405,9 +4041,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8703097+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3937325+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.62": {
       "IP": "172.17.76.62",
@@ -3421,9 +4060,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8703097+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3895478+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.63": {
       "IP": "172.17.76.63",
@@ -3437,9 +4079,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.8697925+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3957291+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.64": {
       "IP": "172.17.76.64",
@@ -3453,9 +4098,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3614774+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3909217+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.65": {
       "IP": "172.17.76.65",
@@ -3469,9 +4117,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3604814+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3895478+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.66": {
       "IP": "172.17.76.66",
@@ -3485,9 +4136,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.371057+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.4012246+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.67": {
       "IP": "172.17.76.67",
@@ -3501,9 +4155,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3614774+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3957291+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.68": {
       "IP": "172.17.76.68",
@@ -3517,9 +4174,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3680761+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3937325+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.69": {
       "IP": "172.17.76.69",
@@ -3533,9 +4193,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3680761+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.397703+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.7": {
       "IP": "172.17.76.7",
@@ -3549,9 +4212,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3662562+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4175204+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.70": {
       "IP": "172.17.76.70",
@@ -3565,9 +4231,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3604814+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.397703+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.71": {
       "IP": "172.17.76.71",
@@ -3581,9 +4250,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3614774+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.4051178+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.72": {
       "IP": "172.17.76.72",
@@ -3597,9 +4269,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3694301+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3919214+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.73": {
       "IP": "172.17.76.73",
@@ -3613,9 +4288,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3614774+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:27.3957291+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.74": {
       "IP": "172.17.76.74",
@@ -3629,9 +4307,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3694301+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.3947327+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.75": {
       "IP": "172.17.76.75",
@@ -3645,9 +4326,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3654475+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.3995087+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.76": {
       "IP": "172.17.76.76",
@@ -3661,9 +4345,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3730671+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.39323+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.77": {
       "IP": "172.17.76.77",
@@ -3677,9 +4364,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3953385+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.3995087+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.78": {
       "IP": "172.17.76.78",
@@ -3693,9 +4383,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3705533+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8920957+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.79": {
       "IP": "172.17.76.79",
@@ -3709,9 +4402,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.371057+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8920957+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.8": {
       "IP": "172.17.76.8",
@@ -3725,9 +4421,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3702342+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4004205+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.80": {
       "IP": "172.17.76.80",
@@ -3741,9 +4440,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3699338+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8946772+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.81": {
       "IP": "172.17.76.81",
@@ -3757,9 +4459,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3720708+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8891056+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.82": {
       "IP": "172.17.76.82",
@@ -3773,9 +4478,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.3948364+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8946772+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.83": {
       "IP": "172.17.76.83",
@@ -3789,9 +4497,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8598033+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8901024+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.84": {
       "IP": "172.17.76.84",
@@ -3805,9 +4516,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8598033+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8891056+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.85": {
       "IP": "172.17.76.85",
@@ -3821,9 +4535,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.871281+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.9001183+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.86": {
       "IP": "172.17.76.86",
@@ -3837,9 +4554,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8679737+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8891056+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.87": {
       "IP": "172.17.76.87",
@@ -3853,9 +4573,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8598033+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.9026321+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.88": {
       "IP": "172.17.76.88",
@@ -3869,9 +4592,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.862793+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8951793+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.89": {
       "IP": "172.17.76.89",
@@ -3885,9 +4611,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8670994+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8901024+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.9": {
       "IP": "172.17.76.9",
@@ -3901,9 +4630,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:29.3632667+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9639573+01:00",
+      "LastScan": "2026-03-11T09:26:26.4035909+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.90": {
       "IP": "172.17.76.90",
@@ -3917,9 +4649,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8724167+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8946772+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.91": {
       "IP": "172.17.76.91",
@@ -3933,9 +4668,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8657012+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8946772+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.92": {
       "IP": "172.17.76.92",
@@ -3949,9 +4687,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8679737+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8946772+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.93": {
       "IP": "172.17.76.93",
@@ -3965,9 +4706,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8598033+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8920957+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.94": {
       "IP": "172.17.76.94",
@@ -3981,9 +4725,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8676017+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8980919+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.95": {
       "IP": "172.17.76.95",
@@ -3997,9 +4744,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8608002+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.8980919+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.96": {
       "IP": "172.17.76.96",
@@ -4013,9 +4763,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8697483+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.9001183+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.97": {
       "IP": "172.17.76.97",
@@ -4029,9 +4782,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8637898+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:27.9018111+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.98": {
       "IP": "172.17.76.98",
@@ -4045,9 +4801,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.8617968+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.389567+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     },
     "172.17.76.99": {
       "IP": "172.17.76.99",
@@ -4061,9 +4820,12 @@
       "TwinCATVersion": "",
       "RuntimeStatus": "",
       "DeviceType": "",
-      "LastUpdate": "2026-03-09T12:02:18.165199+01:00",
-      "LastScan": "2026-03-09T14:08:30.862793+01:00",
-      "LastSeenOnline": "0001-01-01T00:00:00Z"
+      "LastUpdate": "2026-03-11T09:17:27.9644674+01:00",
+      "LastScan": "2026-03-11T09:26:28.390366+01:00",
+      "LastSeenOnline": "0001-01-01T00:00:00Z",
+      "RouteKnownGood": false,
+      "LastRouteOK": "0001-01-01T00:00:00Z",
+      "RuntimePort": 0
     }
   }
 }

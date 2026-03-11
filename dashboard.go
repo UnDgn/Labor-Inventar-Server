@@ -10,18 +10,34 @@ import (
 	"time"
 )
 
+// DashboardStats enthält die Kennzahlen, die oberhalb der Tabelle angezeigt werden.
 type DashboardStats struct {
-	Online  int
-	Offline int
-	Known   int
+	Online  int // Anzahl aktuell erreichbarer Geräte
+	Offline int // Anzahl aktuell nicht erreichbarer Geräte
+	Known   int // Anzahl "erkannter" Geräte mit mindestens einem Merkmal
 }
 
+// DashboardModel ist das komplette ViewModel für das Dashboard.
 type DashboardModel struct {
-	LastUpdateStr string
-	Devices       []*IPC
+	LastUpdateStr string // Zeitstempel für die Header-Anzeige "Refreshed"
+	Devices       []*IPC // sortierte Geräteliste für die Tabelle
 	Stats         DashboardStats
 }
 
+//
+// ------------------------------------------------------------
+// Hilfsfunktion für relative Zeitangaben
+// ------------------------------------------------------------
+//
+
+// formatRelativeTime formatiert einen Zeitstempel relativ zu "jetzt".
+//
+// Beispiele:
+// - gerade eben
+// - 5 min
+// - 2 h
+// - 3 d
+// - 1 w
 func formatRelativeTime(t time.Time) string {
 	if t.IsZero() {
 		return "-"
@@ -45,10 +61,23 @@ func formatRelativeTime(t time.Time) string {
 	return fmt.Sprintf("%d w", int(diff.Hours()/24/7))
 }
 
+//
+// ------------------------------------------------------------
+// Dashboard-Datenmodell aufbauen
+// ------------------------------------------------------------
+//
+
+// buildDashboardModel baut das Datenmodell für die HTML-Ansicht auf.
+//
+// Ablauf:
+// 1. Geräte aus dem Inventory unter Lock kopieren
+// 2. Statistik berechnen
+// 3. Geräte für die Anzeige sortieren
 func buildDashboardModel() DashboardModel {
 	lastUpdateStr := time.Now().Format("15:04:05")
 
 	inventoryMutex.Lock()
+
 	var devices []*IPC
 	stats := DashboardStats{}
 
@@ -61,20 +90,25 @@ func buildDashboardModel() DashboardModel {
 			stats.Offline++
 		}
 
-		// "Erkannt" = hat mindestens ein Merkmal (MAC / Hostname / AMS)
+		// Ein Gerät gilt als "erkannt", wenn mindestens ein Identitätsmerkmal bekannt ist.
 		if dev.MACAddress != "" || dev.Hostname != "" || dev.AmsNetID != "" {
 			stats.Known++
 		}
 	}
+
 	inventoryMutex.Unlock()
 
-	// Sortieren
+	// Sortierung:
+	// 1. Online-Geräte zuerst
+	// 2. innerhalb dessen nach IP-Adresse aufsteigend
 	sort.Slice(devices, func(i, j int) bool {
 		if devices[i].IsReachable != devices[j].IsReachable {
 			return devices[i].IsReachable
 		}
+
 		ipI := net.ParseIP(devices[i].IP).To4()
 		ipJ := net.ParseIP(devices[j].IP).To4()
+
 		return bytes.Compare(ipI, ipJ) < 0
 	})
 
@@ -85,8 +119,23 @@ func buildDashboardModel() DashboardModel {
 	}
 }
 
+//
+// ------------------------------------------------------------
+// Dashboard-HTML rendern
+// ------------------------------------------------------------
+//
+
+// renderDashboard schreibt die komplette HTML-Seite direkt in den ResponseWriter.
+//
+// Die Datei rendert aktuell bewusst "roh" per fmt.Fprint / fmt.Fprintf,
+// also ohne separates Template-File.
+// Dadurch liegt die komplette Dashboard-Ansicht in Go-Code.
 func renderDashboard(w http.ResponseWriter, m DashboardModel) {
-	// 1) Grund-HTML bis Header-Bar (OHNE Tabelle)
+	//
+	// --------------------------------------------------------
+	// 1) HTML-Kopf, CSS, JS und obere Header-Bar
+	// --------------------------------------------------------
+	//
 	fmt.Fprint(w, `
     <html>
     <head>
@@ -107,6 +156,7 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
             .btn-scan { background-color: #ce1126; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
             .btn-scan:hover { background-color: #a00d1d; }
             .btn-scan:disabled { background-color: #ccc; }
+
 			th[draggable="true"] { cursor: grab; user-select: none; }
 			th.dragging { opacity: 0.5; }
 			th.drag-over { outline: 2px dashed rgba(255,255,255,0.7); outline-offset: -6px; }
@@ -119,29 +169,30 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
             th { position: relative; }
 
 			.btn-reset {
-  background-color: #eee;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 10px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-}
-.btn-reset:hover { background-color: #e2e2e2; }
+                background-color: #eee;
+                color: #333;
+                border: 1px solid #ddd;
+                padding: 10px 14px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+            .btn-reset:hover { background-color: #e2e2e2; }
+
             .col-resizer {
-              position: absolute;
-              top: 0;
-              right: 0;
-              width: 10px;
-              height: 100%;
-              cursor: col-resize;
-              z-index: 9999;
-              background: rgba(0,0,0,0.0);
-              pointer-events: auto;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 10px;
+                height: 100%;
+                cursor: col-resize;
+                z-index: 9999;
+                background: rgba(0,0,0,0.0);
+                pointer-events: auto;
             }
 
             .col-resizer:hover {
-              background: rgba(255,255,255,0.35);
+                background: rgba(255,255,255,0.35);
             }
 
             .ip-cell {
@@ -166,113 +217,129 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
                 cursor: default;
             }
 
-/* kompakte Standard-Spaltenbreiten */
-th[data-col="fav"],
-td[data-col="fav"]{
-  width: 36px;
-  min-width: 36px;
-  max-width: 36px;
-  padding-left: 6px;
-  padding-right: 6px;
-  text-align: center;
-}
+            /* kompakte Standard-Spaltenbreiten */
+            th[data-col="fav"],
+            td[data-col="fav"] {
+                width: 36px;
+                min-width: 36px;
+                max-width: 36px;
+                padding-left: 6px;
+                padding-right: 6px;
+                text-align: center;
+            }
 
-th[data-col="status"], td[data-col="status"] {
-  width: 80px;
-  min-width: 80px;
-  max-width: 80px;
-  padding-right: 4px;
-}
+            th[data-col="status"], td[data-col="status"] {
+                width: 80px;
+                min-width: 80px;
+                max-width: 80px;
+                padding-right: 4px;
+            }
 
-th[data-col="ip"], td[data-col="ip"] {
-  width: 150px;          /* passt 255.255.255.255 + Icon */
-  min-width: 150px;
-  max-width: 170px;      
-}
+            th[data-col="ip"], td[data-col="ip"] {
+                width: 150px;
+                min-width: 150px;
+                max-width: 170px;
+            }
 
-th[data-col="office"],
-td[data-col="office"] {
-  width: 75px;
-  min-width: 65px;
-  max-width: 100px;
-}
+            th[data-col="office"],
+            td[data-col="office"] {
+                width: 75px;
+                min-width: 65px;
+                max-width: 100px;
+            }
 
-.office-select {
-  width: 100%;
-  font-size: 0.85em;
-  padding: 4px 6px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-}
+            .office-select {
+                width: 100%;
+                font-size: 0.85em;
+                padding: 4px 6px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+            }
 
-th[data-col="comment"],
-td[data-col="comment"] {
-  width: 260px;
-  min-width: 200px;
-  max-width: 280px;
-}
+            th[data-col="comment"],
+            td[data-col="comment"] {
+                width: 260px;
+                min-width: 200px;
+                max-width: 280px;
+            }
 
-.comment-input {
-  width: 100%;
-  height: 34px;
-  min-height: 34px;
-  resize: vertical;
-  overflow-y: auto;
-  font-size: 0.95em;
-  line-height: 1.3;
-  padding: 6px 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+            .comment-input {
+                width: 100%;
+                height: 34px;
+                min-height: 34px;
+                resize: vertical;
+                overflow-y: auto;
+                font-size: 0.95em;
+                line-height: 1.3;
+                padding: 6px 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-family: "Segoe UI", sans-serif;
+            }
 
-th[data-col="twincat"], td[data-col="twincat"] {
-  width: 95px;           
-  min-width: 95px;
-  max-width: 110px;
-}
+            th[data-col="twincat"], td[data-col="twincat"] {
+                width: 95px;
+                min-width: 95px;
+                max-width: 110px;
+            }
 
-th[data-col="lastonline"], td[data-col="lastonline"] {
-  width: 140px;          /* passt "vor 2 Tagen" + (03.03.2026 10:23:07) */
-  min-width: 170px;
-  max-width: 250px;      /* optional */
-}
+            th[data-col="lastonline"], td[data-col="lastonline"] {
+                width: 140px;
+                min-width: 170px;
+                max-width: 250px;
+            }
 
-/* Damit lange Inhalte nicht alles sprengen */
-#deviceTable { table-layout: fixed; }
-#deviceTable th, #deviceTable td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            #deviceTable { table-layout: fixed; }
+            #deviceTable th, #deviceTable td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-            /* Favoriten-Button einheitlich */
-.fav-btn {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  padding: 2px 4px;
-}
+            /* Favoriten */
+            .fav-btn {
+                background: transparent;
+                border: 0;
+                cursor: pointer;
+                font-size: 16px;
+                line-height: 1;
+                padding: 2px 4px;
+            }
 
-.fav-btn.is-fav {
-  color: #ce1126;
-  font-weight: bold;
-}
+            .fav-btn.is-fav {
+                color: #ce1126;
+                font-weight: bold;
+            }
 
-.fav-btn:hover { transform: scale(1.2); }
+            .fav-btn:hover { transform: scale(1.2); }
 
-.fav-btn.disabled {
-  opacity: 0.25;
-  cursor: default;
-  pointer-events: none;
-}
+            .fav-btn.disabled {
+                opacity: 0.25;
+                cursor: default;
+                pointer-events: none;
+            }
 
-.active-filter {
-  background-color: #ce1126;
-  color: white;
-  border-color: #ce1126;
-}
+            /* Farbgebung TwinCAT-/Runtime-State */
+            .runtime-run {
+                color: #28a745;
+                font-weight: 600;
+            }
 
+            .runtime-stop {
+                color: #c62828;
+                font-weight: 600;
+            }
+
+            .runtime-config {
+                color: #1565c0;
+                font-weight: 600;
+            }
+
+            .active-filter {
+                background-color: #ce1126;
+                color: white;
+                border-color: #ce1126;
+            }
+
+            /* Statistikleiste */
             .stats-bar {
                 display: flex;
                 gap: 15px;
@@ -296,30 +363,30 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
         </style>
         <script>
            function filterTable() {
-  const filter = document.getElementById("searchInput").value.toUpperCase();
-  const rows = document.querySelectorAll("#deviceTable tbody tr");
+                const filter = document.getElementById("searchInput").value.toUpperCase();
+                const rows = document.querySelectorAll("#deviceTable tbody tr");
 
-  rows.forEach(row => {
-    const office = (row.dataset.office || "").toUpperCase();
+                rows.forEach(row => {
+                    const office = (row.dataset.office || "").toUpperCase();
 
-    // Zeilentext ohne die Select-Optionen der Bürospalte
-    let rowText = "";
-    row.querySelectorAll("td").forEach(td => {
-      if (td.dataset.col === "office") {
-        const select = td.querySelector("select");
-        if (select) {
-          rowText += " " + (select.value || "");
-        }
-      } else {
-        rowText += " " + td.textContent;
-      }
-    });
+                    // Zeilentext ohne die Select-Optionen der Bürospalte
+                    let rowText = "";
+                    row.querySelectorAll("td").forEach(td => {
+                        if (td.dataset.col === "office") {
+                            const select = td.querySelector("select");
+                            if (select) {
+                                rowText += " " + (select.value || "");
+                            }
+                        } else {
+                            rowText += " " + td.textContent;
+                        }
+                    });
 
-    rowText = rowText.toUpperCase();
+                    rowText = rowText.toUpperCase();
 
-    row.style.display = rowText.includes(filter) || office.includes(filter) ? "" : "none";
-  });
-}
+                    row.style.display = rowText.includes(filter) || office.includes(filter) ? "" : "none";
+                });
+            }
 
             function startScan() {
                 const btn = document.getElementById("scanBtn");
@@ -337,9 +404,13 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
                 <div class="logo-section">
                     <img src="/static/logo.png" alt="Beckhoff" style="height: 40px;">
                     <h1 style="margin: 0; font-size: 1.5em; font-weight: 300; display: flex; align-items: center; gap: 10px;">
-    Testnetz 
-    <span style="font-size: 0.4em; font-weight: bold; color: #ce1126; border: 1px solid #ce1126; padding: 2px 6px; border-radius: 4px; letter-spacing: 1px; vertical-align: middle;">BETA</span>
-</h1>
+                        Testnetz 
+                        <a href="mailto:DoganY@beckhoff.com?subject=Feedback Testnetz Tool" 
+                           style="text-decoration: none; font-size: 0.4em; font-weight: bold; color: #ce1126; border: 1px solid #ce1126; padding: 2px 6px; border-radius: 4px; cursor: pointer;"
+                           title="Bug gefunden? Hier klicken!">
+                           BETA
+                        </a>
+                    </h1>
                 </div>
 
                 <div class="search-group">
@@ -350,22 +421,34 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
                 <div class="scan-group">
                     <div class="last-refresh">Refreshed: <strong>`+m.LastUpdateStr+`</strong></div>
                     <button id="scanBtn" class="btn-scan" onclick="startScan()">Scan</button>
-					<button class="btn-reset" onclick="resetColumns()" title="Spaltenlayout zurücksetzen">Reset</button>
+                    <button class="btn-reset" onclick="resetColumns()" title="Spaltenlayout zurücksetzen">Reset</button>
                     <button id="favFilterBtn" class="btn-reset" onclick="toggleFavoriteFilter()" title="Nur Favoriten anzeigen">Nur Favoriten</button>
                 </div>
             </div>
 `)
 
-	// 2) Statistik-Bar
+	//
+	// --------------------------------------------------------
+	// 2) Statistik-Bar oberhalb der Tabelle
+	// --------------------------------------------------------
+	//
 	fmt.Fprintf(w, `
             <div class="stats-bar">
                 <div class="stat-item">Erkannt: <strong>%d</strong></div>
                 <div class="stat-item stat-online">Online: <strong>%d</strong></div>
                 <div class="stat-item stat-offline">Offline: <strong>%d</strong></div>
             </div>
-`, m.Stats.Known, m.Stats.Online, m.Stats.Offline)
+`,
+		m.Stats.Known,
+		m.Stats.Online,
+		m.Stats.Offline,
+	)
 
-	// 3) Tabelle Start
+	//
+	// --------------------------------------------------------
+	// 3) Tabellenkopf rendern
+	// --------------------------------------------------------
+	//
 	fmt.Fprint(w, `
 <table id="deviceTable">
   <colgroup>
@@ -384,7 +467,7 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
   </colgroup>
   <thead>
     <tr id="headerRow">
-	  <th data-col="fav" draggable="true">★<span class="col-resizer"></span></th>
+      <th data-col="fav" draggable="true">★<span class="col-resizer"></span></th>
       <th data-col="status" draggable="true">Status<span class="col-resizer"></span></th>
       <th data-col="ip" draggable="true">IP-Adresse<span class="col-resizer"></span></th>
       <th data-col="hostname" draggable="true">Hostname<span class="col-resizer"></span></th>
@@ -394,16 +477,26 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
       <th data-col="os" draggable="true">OS Version<span class="col-resizer"></span></th>
       <th data-col="ams" draggable="true">AMS Net-ID<span class="col-resizer"></span></th>
       <th data-col="twincat" draggable="true">TwinCAT<span class="col-resizer"></span></th>
-      <th data-col="runtime" draggable="true">Runtime<span class="col-resizer"></span></th>
+      <th data-col="runtime" draggable="true">TC State<span class="col-resizer"></span></th>
       <th data-col="lastonline" draggable="true">Zuletzt online<span class="col-resizer"></span></th>
     </tr>
   </thead>
   <tbody>
 `)
 
-	// 4) Rows
+	//
+	// --------------------------------------------------------
+	// 4) Tabellenzeilen pro Gerät rendern
+	// --------------------------------------------------------
+	//
 	for _, device := range m.Devices {
+		//
+		// --------------------------------------------
+		// Letzte Online-Zeit aufbereiten
+		// --------------------------------------------
+		//
 		var lastSeenStr string
+
 		if device.IsReachable {
 			lastSeenStr = "<span style='color:#28a745;font-weight:bold;'>Jetzt</span>"
 		} else if !device.LastSeenOnline.IsZero() {
@@ -420,16 +513,35 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 			lastSeenStr = "-"
 		}
 
+		//
+		// --------------------------------------------
+		// Online/Offline-Anzeige
+		// --------------------------------------------
+		//
 		statusClass, statusText := "status-offline", "Offline"
 		if device.IsReachable {
 			statusClass, statusText = "status-online", "Online"
 		}
 
+		//
+		// --------------------------------------------
+		// RDP-Button
+		// --------------------------------------------
+		//
+		// Nur bei erreichbaren Geräten aktiv
 		rdpButton := `<span class="rdp-icon disabled">🖥</span>`
 		if device.IsReachable {
-			rdpButton = fmt.Sprintf(`<a href="beckhoff-rdp://%s" class="rdp-icon" title="RDP öffnen">🖥</a>`, device.IP)
+			rdpButton = fmt.Sprintf(
+				`<a href="beckhoff-rdp://%s" class="rdp-icon" title="RDP öffnen">🖥</a>`,
+				device.IP,
+			)
 		}
 
+		//
+		// --------------------------------------------
+		// Favoriten-Button
+		// --------------------------------------------
+		//
 		favCell := fmt.Sprintf(
 			`<button class="fav-btn" data-fav="%s" title="Favorit umschalten">☆</button>`,
 			device.MACAddress,
@@ -438,14 +550,13 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 		if device.MACAddress == "" {
 			favCell = `<button class="fav-btn disabled" title="Keine MAC verfügbar" disabled>☆</button>`
 		}
-		officeOptions := []string{
-			"",
-			"T4015", "T4016", "T4017", "T4018", "T4019",
-			"T4020", "T4021", "T4022", "T4023", "T4024",
-			"T4025", "T4026", "T4027", "T4028", "T4029",
-			"T4030", "T4031", "T4032", "T4033", "T4034",
-			"T4035", "T4036", "T4037", "T4038",
-		}
+
+		//
+		// --------------------------------------------
+		// Büro-Dropdown auf Basis der zentralen validOffices-Liste
+		// --------------------------------------------
+		//
+		officeOptions := append([]string{""}, validOffices...)
 
 		officeSelect := `<select class="office-select" data-mac="` + device.MACAddress + `">`
 
@@ -465,30 +576,59 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 
 		officeSelect += `</select>`
 
+		// Ohne MAC kann keine Zuordnung gespeichert werden → Dropdown deaktivieren
 		if device.MACAddress == "" {
 			officeSelect = `<select class="office-select" disabled><option>-</option></select>`
 		}
 
-		commentInput := `<textarea class="comment-input" data-mac="` + device.MACAddress + `" title="` + template.HTMLEscapeString(device.Comment) + `" placeholder="Kommentar...">` + template.HTMLEscapeString(device.Comment) + `</textarea>`
+		//
+		// --------------------------------------------
+		// Kommentar-Feld
+		// --------------------------------------------
+		//
+		commentInput := `<textarea class="comment-input" data-mac="` + device.MACAddress +
+			`" title="` + template.HTMLEscapeString(device.Comment) +
+			`" placeholder="Kommentar...">` +
+			template.HTMLEscapeString(device.Comment) + `</textarea>`
 
 		if device.MACAddress == "" {
 			commentInput = `<textarea class="comment-input" placeholder="Kommentar..." disabled></textarea>`
 		}
 
+		//
+		// --------------------------------------------
+		// Runtime-/TwinCAT-State farblich markieren
+		// --------------------------------------------
+		//
+		runtimeClass := ""
+		switch device.RuntimeStatus {
+		case "RUN":
+			runtimeClass = "runtime-run"
+		case "STOP":
+			runtimeClass = "runtime-stop"
+		case "CONFIG":
+			runtimeClass = "runtime-config"
+		}
+
+		//
+		// --------------------------------------------
+		// Tabellenzeile rendern
+		// --------------------------------------------
+		//
 		fmt.Fprintf(w, `<tr data-office="%s">
-		  <td data-col="fav" class="fav-cell">%s</td>
-		  <td data-col="status" class="%s">%s</td>
-		  <td data-col="ip"><div class="ip-cell">%s<strong>%s</strong></div></td>
-		  <td data-col="hostname">%s</td>
-      <td data-col="office">%s</td>
-      <td data-col="comment">%s</td>
-		  <td data-col="mac" class="mac-font">%s</td>
-		  <td data-col="os">%s</td>
-		  <td data-col="ams">%s</td>
-		  <td data-col="twincat">%s</td>
-		  <td data-col="runtime">%s</td>
-		  <td data-col="lastonline">%s</td>
-		</tr>`,
+  <td data-col="fav" class="fav-cell">%s</td>
+  <td data-col="status" class="%s">%s</td>
+  <td data-col="ip"><div class="ip-cell">%s<strong>%s</strong></div></td>
+  <td data-col="hostname">%s</td>
+  <td data-col="office">%s</td>
+  <td data-col="comment">%s</td>
+  <td data-col="mac" class="mac-font">%s</td>
+  <td data-col="os">%s</td>
+  <td data-col="ams">%s</td>
+  <td data-col="twincat">%s</td>
+  <td data-col="runtime"><span class="%s">%s</span></td>
+  <td data-col="lastonline">%s</td>
+</tr>`,
 			device.Office,
 			favCell,
 			statusClass, statusText,
@@ -500,12 +640,16 @@ th[data-col="lastonline"], td[data-col="lastonline"] {
 			device.OSVersion,
 			device.AmsNetID,
 			device.TwinCATVersion,
-			device.RuntimeStatus,
+			runtimeClass, device.RuntimeStatus,
 			lastSeenStr,
 		)
 	}
 
-	// 5) HTML schließen
+	//
+	// --------------------------------------------------------
+	// 5) HTML sauber schließen
+	// --------------------------------------------------------
+	//
 	fmt.Fprintf(w, `
                 </tbody>
             </table>
