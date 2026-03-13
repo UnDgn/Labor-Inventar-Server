@@ -333,6 +333,10 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
                 font-weight: 600;
             }
 
+            .runtime-offline {
+                color: #999;
+                font-weight: 600;
+            }
             .active-filter {
                 background-color: #ce1126;
                 color: white;
@@ -542,14 +546,15 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
 		// Favoriten-Button
 		// --------------------------------------------
 		//
+		favKey := device.MACAddress
+		if favKey == "" {
+			favKey = device.IP
+		}
+
 		favCell := fmt.Sprintf(
 			`<button class="fav-btn" data-fav="%s" title="Favorit umschalten">☆</button>`,
-			device.MACAddress,
+			favKey,
 		)
-
-		if device.MACAddress == "" {
-			favCell = `<button class="fav-btn disabled" title="Keine MAC verfügbar" disabled>☆</button>`
-		}
 
 		//
 		// --------------------------------------------
@@ -601,13 +606,18 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
 		// --------------------------------------------
 		//
 		runtimeClass := ""
-		switch device.RuntimeStatus {
-		case "RUN":
-			runtimeClass = "runtime-run"
-		case "STOP":
-			runtimeClass = "runtime-stop"
-		case "CONFIG":
-			runtimeClass = "runtime-config"
+
+		if !device.IsReachable && device.RuntimeStatus != "" {
+			runtimeClass = "runtime-offline"
+		} else {
+			switch device.RuntimeStatus {
+			case "RUN":
+				runtimeClass = "runtime-run"
+			case "STOP":
+				runtimeClass = "runtime-stop"
+			case "CONFIG":
+				runtimeClass = "runtime-config"
+			}
 		}
 
 		//

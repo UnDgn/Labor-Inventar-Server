@@ -127,17 +127,15 @@ func runDiscovery() {
 
 		// So existiert für jede IP 172.17.76.1 bis 172.17.76.254
 		// ein Eintrag im Inventory, auch wenn noch keine Details bekannt sind.
-		inventoryMutex.Lock()
 		for i := 1; i <= 254; i++ {
 			ip := fmt.Sprintf("172.17.76.%d", i)
 			if _, exists := inventory[ip]; !exists {
-				inventory[ip] = &IPC{
-					IP:         ip,
-					LastUpdate: time.Now(),
-				}
+				inventory[ip] = &IPC{IP: ip, LastUpdate: time.Now()}
 			}
+
+			// Flüchtige Erreichbarkeit pro neuem Scan zurücksetzen
+			inventory[ip].IsReachable = false
 		}
-		inventoryMutex.Unlock()
 
 		// --------------------------------------------------------
 		// 2) ADS UDP Discovery
@@ -256,6 +254,10 @@ func runDiscovery() {
 								// Erfolgreichen Port merken (für spätere Erweiterungen / Optimierungen).
 								if res.RuntimePort != 0 {
 									dev.RuntimePort = res.RuntimePort
+
+									// ADS-Erfolg bedeutet: Gerät ist erreichbar
+									dev.IsReachable = true
+									dev.LastSeenOnline = time.Now()
 								}
 
 								dev.RouteKnownGood = true
@@ -325,7 +327,7 @@ func runDiscovery() {
 
 					// Gerätedaten aktualisieren.
 					if dev, ok := inventory[ip]; ok {
-						dev.IsReachable = reachable
+						dev.IsReachable = dev.IsReachable || reachable
 						dev.LastScan = now
 
 						if reachable {
@@ -334,7 +336,7 @@ func runDiscovery() {
 							if mac != "" {
 								dev.MACAddress = normalizeMAC(mac)
 							}
-							if host != "" {
+							if dev.Hostname == "" && host != "" {
 								dev.Hostname = host
 							}
 						}
