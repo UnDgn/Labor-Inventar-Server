@@ -391,14 +391,29 @@ func renderDashboard(w http.ResponseWriter, m DashboardModel) {
                     row.style.display = rowText.includes(filter) || office.includes(filter) ? "" : "none";
                 });
             }
-
-            function startScan() {
+             function startScan() {
                 const btn = document.getElementById("scanBtn");
                 btn.disabled = true;
                 btn.innerText = "Scanning...";
+            
                 fetch('/trigger-scan').then(() => {
-                    setTimeout(() => { location.reload(); }, 3000);
+                    waitForScanToFinish();
                 });
+            }
+            function waitForScanToFinish() {
+                const interval = setInterval(() => {
+                    fetch('/api/scan-status')
+                        .then(r => r.json())
+                        .then(data => {
+                            if (!data.isScanning) {
+                                clearInterval(interval);
+                                location.reload();
+                            }
+                        })
+                        .catch(() => {
+                            clearInterval(interval);
+                        });
+                }, 1000);
             }
         </script>
     </head>

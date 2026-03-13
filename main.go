@@ -25,6 +25,15 @@ func handleTriggerScan(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+func handleScanStatus(w http.ResponseWriter, r *http.Request) {
+	inventoryMutex.Lock()
+	scanning := isScanning
+	inventoryMutex.Unlock()
+
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(w, `{"isScanning": %t}`, scanning)
+}
+
 // handleDashboard rendert die HTML-Übersichtsseite.
 
 // Die eigentliche Modellbildung und HTML-Ausgabe passiert in:
@@ -220,6 +229,7 @@ func main() {
 	http.HandleFunc("/trigger-scan", handleTriggerScan)
 	http.HandleFunc("/api/office", handleOfficeAssignment)
 	http.HandleFunc("/api/comment", handleCommentAssignment)
+	http.HandleFunc("/api/scan-status", handleScanStatus)
 
 	fmt.Println("-----------------------------------------------")
 	const port = 18080
